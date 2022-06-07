@@ -1,18 +1,11 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
-    <!-- vhgvuyhvhyhuh÷ -->
-  </q-page>
+  <div class="absulate-center text-h1">Famix is under development</div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'IndexPage'
-})
+  name: "IndexPage",
+});
 </script>
