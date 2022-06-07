@@ -1,23 +1,36 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <!-- <q-header elevated class="bg-black">
+    <q-header elevated class="bg-black">
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        /> -->
 
-        <q-toolbar-title>
-          Famix
-        </q-toolbar-title>
-
-        <div>Famix v0.0.1</div>
+        <q-toolbar-title class="text-green"> Famix </q-toolbar-title>
+        <!-- <div >
+          <q-input
+            color="green"
+            label-color="green"
+            outlined
+            style="max-width:200px"
+            rounded
+            v-model="search"
+            placeholder="Search Famix"
+          >
+            <template v-slot:append>
+              <q-icon name="search" color="green" />
+            </template>
+          </q-input>
+        </div> -->
+        <div class="q-pa-md text-green">Famix v0.0.1</div>
+        <q-btn  icon="whatsapp" color="green" dense flat round></q-btn>
       </q-toolbar>
-    </q-header> -->
+    </q-header>
 
     <!-- <q-drawer
       v-model="leftDrawerOpen"
@@ -46,7 +59,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+
+import { defineComponent, ref } from "vue";
 // import EssentialLink from 'components/EssentialLink.vue'
 
 // const linksList = [
@@ -95,22 +109,24 @@ import { defineComponent, ref } from 'vue'
 // ]
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
   components: {
     // EssentialLink
   },
 
-  setup () {
-    const leftDrawerOpen = ref(false)
+  setup() {
+    const leftDrawerOpen = ref(false);
 
     return {
+      search: ref(''),
+
       // essentialLinks: linksList,
       // leftDrawerOpen,
       // toggleLeftDrawer () {
       //   leftDrawerOpen.value = !leftDrawerOpen.value
       // }
-    }
-  }
-})
+    };
+  },
+});
 </script>
