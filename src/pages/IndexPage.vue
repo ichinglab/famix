@@ -1,5 +1,5 @@
 <template>
-  <div class="absulate-center text-h1">Famix is under development</div>
+  <div class="fixed-center text-h3 text-red-5">Famix Is Under Development</div>
 </template>
 
 <script>
