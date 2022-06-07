@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Famix
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Famix v0.0.1</div>
       </q-toolbar>
     </q-header>
 
