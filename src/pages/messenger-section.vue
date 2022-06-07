@@ -1,8 +1,7 @@
 <template>
   <div>
-    <q-btn icon="arrow_back_ios_new" to="/" flat color="green"></q-btn>
     <div class="q-pa-md row justify-center">
-      <div style="width: 100%; max-width: 400px">
+      <div style="width: 100%; max-width: 1200px">
         <q-chat-message
           name="me"
           avatar="https://cdn.quasar.dev/img/avatar3.jpg"
@@ -32,6 +31,7 @@
           text-color="white"
           bg-color="primary"
         />
+        <q-spinner-dots size="2rem" />
       </div>
     </div>
   </div>

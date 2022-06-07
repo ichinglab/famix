@@ -28,7 +28,7 @@
           </q-input>
         </div> -->
         <div class="q-pa-md text-green">Famix v0.0.1</div>
-        <q-btn  icon="whatsapp" to="messenger-section" color="green" dense flat round></q-btn>
+        <q-btn  icon="whatsapp" to="chat-page" color="green" dense flat round></q-btn>
       </q-toolbar>
     </q-header>
 
