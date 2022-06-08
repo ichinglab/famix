@@ -44,7 +44,6 @@
       </q-tab-panels>
     </div>
     <q-separator />
-  <!-- <div class="fixed-center text-h3 text-red-5">Famix Is Under Development</div> -->
 </template>
 
 <script>
