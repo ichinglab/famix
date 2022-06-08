@@ -11,7 +11,7 @@
       <q-tab name="feed" label="Feed" />
       <q-tab name="jobs" label="Jobs" />
       <q-tab name="friends" label="friends" />
-      <q-tab name="profile" label="profile" />
+      <q-tab name="profile" label="profile" id="profile"/>
     </q-tabs>
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="feed">

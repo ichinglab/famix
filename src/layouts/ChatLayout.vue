@@ -12,7 +12,9 @@
         <q-avatar>
           <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
         </q-avatar>
-        <q-toolbar-title> Jane </q-toolbar-title>
+        <q-toolbar-title>
+          <q-item clickable to="/#/:id+profile">Jane </q-item>
+        </q-toolbar-title>
       </q-toolbar>
     </q-header>
     <q-page-container>
