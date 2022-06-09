@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <q-list v-for="n in 2" :key="n"  separator class="text-weight-bolder">
+    <q-list v-for="n in 2000" :key="n"  separator class="text-weight-bolder">
       <q-item v-for="user in users" :key="user.id" to="messenger-section" clickable v-ripple>
         <q-item-section avatar>
           <q-avatar>
@@ -68,45 +68,45 @@ const users = [
     avator: 'avatar7.jpg',
   },
   {
-    id: 4,
-    name: "Seka Fawdrey",
-    last_message: "sfawdrey3@wired.com",
+    id: 7,
+    name: "Sejuti Chakrabarty",
+    last_message: "What are you doing baby?",
+    avator: 'avatar4.jpg',
+  },
+  {
+    id: 8,
+    name: "Sneha Khan",
+    last_message: "you: I don't go.",
+    avator: 'avatar4.jpg',
+  },
+  {
+    id: 9,
+    name: "Tara Sutaria",
+    last_message: "Sorry I'm late !",
+    avator: 'avatar4.jpg',
+  },
+  {
+    id: 10,
+    name: "Mahmud Alam",
+    last_message: "Dst ami mirpur 1 a .",
+    avator: 'avatar4.jpg',
+  },
+  {
+    id: 11,
+    name: "Sohanur Rahman",
+    last_message: "you: nare aj ar ber hobo nah",
+    avator: 'avatar4.jpg',
+  },
+  {
+    id: 12,
+    name: "Waterfall Model",
+    last_message: "Sorry bro you software doesn't have any requirment with me",
     avator: 'avatar4.jpg',
   },
   {
     id: 4,
-    name: "Seka Fawdrey",
-    last_message: "sfawdrey3@wired.com",
-    avator: 'avatar4.jpg',
-  },
-  {
-    id: 4,
-    name: "Seka Fawdrey",
-    last_message: "sfawdrey3@wired.com",
-    avator: 'avatar4.jpg',
-  },
-  {
-    id: 4,
-    name: "Seka Fawdrey",
-    last_message: "sfawdrey3@wired.com",
-    avator: 'avatar4.jpg',
-  },
-  {
-    id: 4,
-    name: "Seka Fawdrey",
-    last_message: "sfawdrey3@wired.com",
-    avator: 'avatar4.jpg',
-  },
-  {
-    id: 4,
-    name: "Seka Fawdrey",
-    last_message: "sfawdrey3@wired.com",
-    avator: 'avatar4.jpg',
-  },
-  {
-    id: 4,
-    name: "Seka Fawdrey",
-    last_message: "sfawdrey3@wired.com",
+    name: "Agile Model",
+    last_message: "Welcome to my model",
     avator: 'avatar4.jpg',
   },
 ];
