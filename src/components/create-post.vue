@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <div class="q-gutter-md">
       <q-input
-        v-model="textareaModel"
+        v-model="createPost"
         bottom-slots
         outlined
         clearable
@@ -54,7 +54,7 @@ export default {
       return t.split(inputModel.value).slice(1).join(inputModel.value);
     });
 
-    const textareaModel = ref("");
+    const createPost = ref("");
     const textareaFillCancelled = ref(false);
     const textareaShadowText = computed(() => {
       if (textareaFillCancelled.value === true) {
@@ -64,19 +64,19 @@ export default {
       const t =
           "This text\nwill be filled\non multiple lines\nwhen you press TAB",
         empty =
-          typeof textareaModel.value !== "string" ||
-          textareaModel.value.length === 0;
+          typeof createPost.value !== "string" ||
+          createPost.value.length === 0;
 
       if (empty === true) {
         return t.split("\n")[0];
-      } else if (t.indexOf(textareaModel.value) !== 0) {
+      } else if (t.indexOf(createPost.value) !== 0) {
         return "";
       }
 
       return t
-        .split(textareaModel.value)
+        .split(createPost.value)
         .slice(1)
-        .join(textareaModel.value)
+        .join(createPost.value)
         .split("\n")[0];
     });
 
@@ -109,7 +109,7 @@ export default {
         }
       },
 
-      textareaModel,
+      createPost,
       textareaFillCancelled,
       textareaShadowText,
 
@@ -128,9 +128,9 @@ export default {
             this.textareaShadowText.length > 0
           ) {
             stopAndPrevent(e);
-            textareaModel.value =
-              (typeof textareaModel.value === "string"
-                ? textareaModel.value
+            createPost.value =
+              (typeof createPost.value === "string"
+                ? createPost.value
                 : "") + this.textareaShadowText;
           }
         } else if (textareaFillCancelled.value === true) {
