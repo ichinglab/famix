@@ -2,6 +2,8 @@
 
 Famix A World Wide Chat Book
 
+## https://famix.netlify.app/#/
+
 ## Install the dependencies
 ```bash
 yarn
