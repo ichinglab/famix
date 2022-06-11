@@ -5,6 +5,7 @@
         v-model="createPost"
         bottom-slots
         outlined
+        rounded
         clearable
         autogrow
         color="green"

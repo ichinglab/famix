@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md flex-center" style="max-width: 100%">
+  <div class=" flex-center" style="max-width: 100%">
     <div class="row flex-center" style="max-width: 100%">
       <q-tabs
         v-model="tab"
@@ -17,23 +17,23 @@
 
     <q-separator />
 
-    <div class="row flex-center">
+    <div class="row  flex-center">
       <q-tab-panels v-model="tab" animated>
         <!-- Feed Section -->
 
         <q-tab-panel name="feed">
           <div row flex-center>
             <!-- create post components -->
-            <div class="q-pa-md">
+            <div class="my-post">
               <createPost />
             </div>
             <!-- create post components -->
             <div v-for="post in posts" :key="post.id" class="row flex-center">
-              <q-card  class="bg-green my-card">
+              <q-card class="bg-grey-10 my-card">
                 <q-item-section>
                   <q-item-label>
                     <div class="row">
-                      <div class="col">
+                      <div class="col q-pl-xs q-pt-xs">
                         <q-avatar size="30px">
                           <img
                             :src="`https://cdn.quasar.dev/img/${post.avator}`"
@@ -43,11 +43,14 @@
                           {{ post.name }}
                         </span>
                         <span class="text-h7"> {{ post.time }} </span>
+                        <span>
+                          <q-btn flat size="10px"  round icon="public"></q-btn>
+                        </span>
                       </div>
                     </div>
                   </q-item-label>
                 </q-item-section>
-                <img :src="`https://cdn.quasar.dev/img/${post.avator}`" />
+                <img class="q-pt-xs" :src="`https://cdn.quasar.dev/img/${post.avator}`" />
 
                 <q-card-section class="row">
                   <div class="text-h6">{{ post.title }}</div>
@@ -62,7 +65,7 @@
                 </q-card-section>
                 <q-card-actions>
                   <q-space />
-                  <span class="read_more_text">READ MORE</span>
+                  <span class="read_more_text">View More</span>
                   <q-btn
                     color="primary"
                     round
@@ -210,7 +213,8 @@ const posts = [
     last_message: "you: I don't go.",
     avator: "avatar3.jpg",
     title: "What to watch for",
-    full_details: "after itself so you need to delete them manually. Plus, each time you generate fake content with images, those images get added to your Media Library; so for a complete cleanup, you'll need to go to Media Library and delete images associated with the fake content. Other than that small nit about clean up, this is a great plugin. Simple and quick to use, easy to understand.",
+    full_details:
+      "after itself so you need to delete them manually. Plus, each time you generate fake content with images, those images get added to your Media Library; so for a complete cleanup, you'll need to go to Media Library and delete images associated with the fake content. Other than that small nit about clean up, this is a great plugin. Simple and quick to use, easy to understand.",
     details:
       "What to watch for: as mentioned before, this plugin doesn't clean up ",
     time: "8:09 PM",
@@ -221,7 +225,8 @@ const posts = [
     last_message: "Sorry I'm late !",
     avator: "avatar4.jpg",
     title: "Quantity",
-    full_details: "the first field only, Fakerpress generates three posts. If you enter 3 in the first field and 10 in the second, FakerPress will randomly generate between 3 - 10 posts. I would just enter a number in the first field and skip the randomness.",
+    full_details:
+      "the first field only, Fakerpress generates three posts. If you enter 3 in the first field and 10 in the second, FakerPress will randomly generate between 3 - 10 posts. I would just enter a number in the first field and skip the randomness.",
     details:
       "Quantity: There are 2 fields. With a > between them. If you enter 3 in",
     time: "11:23 PM",
@@ -232,7 +237,8 @@ const posts = [
     last_message: "Dst ami mirpur 1 a .",
     avator: "avatar5.jpg",
     title: "HTML tags",
-    full_details: " this list. Useful if you want to see how your theme's CSS looks on a page. Quotes, headers, bulleted lists, images - you'll get a random sampling.",
+    full_details:
+      " this list. Useful if you want to see how your theme's CSS looks on a page. Quotes, headers, bulleted lists, images - you'll get a random sampling.",
     details:
       "HTML tags: Your content will contain some or all of the HTML tags in",
     time: "5:09 AM",
@@ -254,7 +260,8 @@ const posts = [
     last_message: "Sorry bro you software doesn't have any requirment with me",
     avator: "avatar1.jpg",
     title: "Image Providers",
-    full_details: " and LoremPixel. Something to watch out for: if you want all of your content to have nice images, remove Placehold.it from this list. Otherwise some of your posts will contain images of grey boxes, each with its dimensions, i.e. 560 x 440. On the other hand, if you need to test how images of different sizes look on a page, Placehold.it is a very useful source.",
+    full_details:
+      " and LoremPixel. Something to watch out for: if you want all of your content to have nice images, remove Placehold.it from this list. Otherwise some of your posts will contain images of grey boxes, each with its dimensions, i.e. 560 x 440. On the other hand, if you need to test how images of different sizes look on a page, Placehold.it is a very useful source.",
     details:
       "Image Providers: FakerPress pulls images from Placehold.it, Unsplash it",
     time: "5:00 PM",
@@ -265,7 +272,8 @@ const posts = [
     last_message: "Welcome to my model",
     avator: "avatar2.jpg",
     title: "Author",
-    full_details: " users on your website, and FakerPress will generate content tagged as authored by those users. What you need to watch out for is that if the user's role is one where posts need to be approved before publishing, you will need to manually publish their posts. Obviously you need to have user accounts already created for this option to work, and for that you can use FakerPress. I prefer to create a few user accounts manually and have complete control over their roles and names.",
+    full_details:
+      " users on your website, and FakerPress will generate content tagged as authored by those users. What you need to watch out for is that if the user's role is one where posts need to be approved before publishing, you will need to manually publish their posts. Obviously you need to have user accounts already created for this option to work, and for that you can use FakerPress. I prefer to create a few user accounts manually and have complete control over their roles and names.",
     details:
       "Author: You can select one or several authors for the post from the",
     time: "11:08 PM",
@@ -294,7 +302,7 @@ export default defineComponent({
   max-width: 1250px
 
 .row > div
-  padding: 10px 15px
+  // padding: 10px 15px
   // background: rgba(86,61,124,.15)
   // border: 1px solid rgba(86,61,124,.2)
 .row + .row
@@ -305,4 +313,8 @@ export default defineComponent({
 
 .name-texttt
   font-size: 15px
+
+.my-post
+  // padding: -1px
+  margin: -15px
 </style>
