@@ -40,7 +40,7 @@ const users = [
   {
     id: 3,
     name: "Elisabetta Wicklen",
-    last_message: "f*** bloody ",
+    last_message: "Hey bro, what's up? ",
     avator: 'avatar3.jpg',
   },
   {

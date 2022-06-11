@@ -29,7 +29,7 @@
             </div>
             <!-- create post components -->
             <div v-for="post in posts" :key="post.id" class="row flex-center">
-              <q-card class="bg-green my-card">
+              <q-card  class="bg-green my-card">
                 <q-item-section>
                   <q-item-label>
                     <div class="row">
