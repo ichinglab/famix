@@ -22,7 +22,7 @@ div {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  box-shadow: inset 0 0 50px #fff, inset 20px 0 80px #f0f,
+  box-shadow: inset 0 0 50px black, inset 20px 0 80px black,
     inset -20px 0 80px #0ff, inset 20px 0 300px #f0f, inset -20px 0 300px #0ff,
     0 0 50px #fff, -10px 0 80px #f0f, 10px 0 80px #0ff;
 }

@@ -1,13 +1,12 @@
 <template>
-  <div class="q-py-md row flex-center" style="padding: 150px">
-    <q-avatar size="150px">
-      <img src="../assets/login.png" />
-    </q-avatar>
+  <div class="q-py-md row flex-center" style="padding: 100px">
+    <loginLogo />
   </div>
 
   <div class="q-pa-md absolute-center">
     <!-- Login BTN -->
     <div class="q-py-md">
+      <loginBtn />
       <q-btn
         class="glossy"
         dense
@@ -16,64 +15,6 @@
         label="login"
         to="IndexPage"
       />
-      <!-- <q-dialog v-model="dialog" :position="position" full-height>
-        <q-card style="width: 350px; height: 500px">
-          <q-card-section>
-            <div class="text-h6">Wellcome To Famix Chat</div>
-          </q-card-section>
-          <q-separator />
-          <q-card-section class="q-pa-md absolute-center">
-            <div>
-              <q-input
-                outlined
-                dense
-                class="q-py-md"
-                type="tel"
-                rounded
-                style="width: 300px"
-                label="Phone"
-              ></q-input>
-              <q-input
-                outlined
-                dense
-                rounded
-                type="email"
-                style="width: 300px"
-                label="Email"
-              ></q-input>
-
-              <q-input
-                v-model="password"
-                rounded
-                outlined
-                label="Password"
-                dense
-                class="q-py-md"
-                :type="isPwd ? 'password' : 'text'"
-              >
-                <template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
-                </template>
-              </q-input>
-            </div>
-            <div class="q-pa-md">
-              <q-btn
-                class="glossy"
-                dense
-                type="submit"
-                rounded
-                style="width: 150px"
-                label="register now"
-                to=""
-              />
-            </div>
-          </q-card-section>
-        </q-card>
-      </q-dialog> -->
     </div>
 
     <!-- Register BTN -->
@@ -185,14 +126,19 @@
     <!-- Forgot BTN -->
 
     <div class="q-py-md">
-      <q-btn class="glossy" dense rounded style="width: 150px" label="forgot" />
+      <q-btn class="glossy" to="/forgot-window" dense rounded style="width: 150px" label="forgot" />
     </div>
   </div>
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import { ref } from "vue";
-export default {
+import loginLogo from "components/Login-logo.vue";
+import loginBtn from "components/Login-btn.vue";
+export default defineComponent ({
+  components: { loginLogo , loginBtn },
+
   // name: 'PageName',
   setup() {
     const dialog = ref(false);
@@ -215,7 +161,7 @@ export default {
       },
     };
   },
-};
+});
 </script>
 <style lang="sass" scoped>
 .my-card
@@ -224,4 +170,5 @@ export default {
 
 .body-color
   background-color: blue
+
 </style>
