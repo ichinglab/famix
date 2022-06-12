@@ -14,7 +14,7 @@
         /> -->
 
         <q-toolbar-title>
-          <q-btn dense flat icon="arrow_back_ios_new" to="/"></q-btn>
+          <q-btn dense flat icon="arrow_back_ios_new" to="/IndexPage"></q-btn>
           Famix Chat
         </q-toolbar-title>
       </q-toolbar>

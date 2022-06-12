@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         /> -->
 
-        <q-toolbar-title class="text-green"> Famix </q-toolbar-title>
+        <q-toolbar-title class="text-green text-h5" > Famix </q-toolbar-title>
         <!-- <div >
           <q-input
             color="green"
@@ -27,8 +27,8 @@
             </template>
           </q-input>
         </div> -->
-        <div class="q-pa-md text-green">Famix v0.0.1</div>
-        <q-btn  icon="whatsapp" to="chat-page" color="green" dense flat round></q-btn>
+        <!-- <div class="q-pa-md text-green">Famix v0.0.1</div> -->
+        <q-btn  icon="whatsapp" to="chat-page" size="20px" color="green" dense flat round></q-btn>
       </q-toolbar>
     </q-header>
 

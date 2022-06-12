@@ -13,7 +13,7 @@
           <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
         </q-avatar>
         <q-toolbar-title>
-          <q-item clickable to="/#/:id+profile">Jane </q-item>
+          <q-item clickable to="/IndexPage">Jane </q-item>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

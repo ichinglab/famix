@@ -7,6 +7,7 @@
         outlined
         rounded
         clearable
+        dense
         autogrow
         color="green"
         label="Post Here"
