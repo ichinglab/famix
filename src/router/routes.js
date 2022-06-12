@@ -2,9 +2,18 @@
 const routes = [
   {
     path: '/',
+    component: () => import('layouts/login-activity.vue'),
+    children: [
+      { path: '', component: () => import('pages/login-window.vue') },
+      { path: '/reg-window', component: () => import('pages/reg-window.vue') },
+      { path: '/forgot-window', component: () => import('pages/forgot-window.vue') },
+    ]
+  },
+  {
+    path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
+      { path: '/IndexPage', component: () => import('pages/IndexPage.vue') },
     ]
   },
   {
