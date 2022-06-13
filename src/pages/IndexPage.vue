@@ -1,5 +1,5 @@
 <template>
-  <div class=" flex-center" style="max-width: 100%">
+  <div class="flex-center" style="max-width: 100%">
     <div class="row flex-center" style="max-width: 100%">
       <q-tabs
         v-model="tab"
@@ -8,16 +8,17 @@
         active-color="green"
         indicator-color="green"
       >
-        <q-tab name="feed" label="Feed" />
-        <q-tab name="jobs" label="Jobs" />
-        <q-tab name="friends" label="friends" />
-        <q-tab name="profile" label="profile" />
+        <q-tab name="feed" icon="roofing" />
+        <q-tab name="jobs" icon="work" />
+        <q-tab name="friends" icon="groups" />
+        <q-tab name="profile" icon="person" />
+        <q-tab name="settings" icon="settings" />
       </q-tabs>
     </div>
 
     <q-separator />
 
-    <div class="row  flex-center">
+    <div class="row flex-center">
       <q-tab-panels v-model="tab" animated>
         <!-- Feed Section -->
 
@@ -44,13 +45,16 @@
                         </span>
                         <span class="text-h7"> {{ post.time }} </span>
                         <span>
-                          <q-btn flat size="10px"  round icon="public"></q-btn>
+                          <q-btn flat size="10px" round icon="public"></q-btn>
                         </span>
                       </div>
                     </div>
                   </q-item-label>
                 </q-item-section>
-                <img class="q-pt-xs" :src="`https://cdn.quasar.dev/img/${post.avator}`" />
+                <img
+                  class="q-pt-xs"
+                  :src="`https://cdn.quasar.dev/img/${post.avator}`"
+                />
 
                 <q-card-section class="row">
                   <div class="text-h6">{{ post.title }}</div>
@@ -105,7 +109,6 @@
           <div class="text-h6">
             <usersFriends />
           </div>
-
         </q-tab-panel>
 
         <!-- Profile Section -->
@@ -113,6 +116,14 @@
         <q-tab-panel name="profile">
           <div class="text-h6">
             <usersProfile />
+          </div>
+        </q-tab-panel>
+
+        <!-- Settings -->
+
+        <q-tab-panel name="settings">
+          <div class="text-h6">
+            <usersSettings />
           </div>
         </q-tab-panel>
       </q-tab-panels>
@@ -289,12 +300,13 @@ import createPost from "components/create-post.vue";
 import usersFriends from "components/Users-Friends.vue";
 import usersJobs from "components/Users-Jobs.vue";
 import usersProfile from "components/Users-Profile.vue";
+import usersSettings from "components/Users-Settings.vue";
 export default defineComponent({
-  components: { createPost , usersFriends  , usersJobs , usersProfile},
+  components: { createPost, usersFriends, usersJobs, usersProfile , usersSettings},
   name: "IndexPage",
   setup() {
     return {
-      tab: ref("profile"),
+      tab: ref("feed"),
       lorem:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       expanded: ref(false),
