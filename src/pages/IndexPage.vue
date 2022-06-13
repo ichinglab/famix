@@ -114,7 +114,6 @@
           <div class="text-h6">
             <usersProfile />
           </div>
-          Profile Working !
         </q-tab-panel>
       </q-tab-panels>
     </div>
@@ -295,7 +294,7 @@ export default defineComponent({
   name: "IndexPage",
   setup() {
     return {
-      tab: ref("feed"),
+      tab: ref("profile"),
       lorem:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       expanded: ref(false),
