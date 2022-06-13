@@ -6,7 +6,6 @@
   <div class="q-pa-md absolute-center">
     <!-- Login BTN -->
     <div class="q-py-md">
-      <loginBtn />
       <q-btn
         class="glossy"
         dense
@@ -35,7 +34,9 @@
         transition-show="slide-up"
         transition-hide="slide-down"
       >
-        <q-card class="bg-primary text-white">
+        <q-card class="bg-black text-white">
+    <loginBtn />
+
           <q-bar>
             <q-space />
 
@@ -72,6 +73,7 @@
 
           <q-card-section class="q-pa-md absolute-center">
             <div>
+              
               <q-input
                 outlined
                 dense
@@ -126,8 +128,16 @@
     <!-- Forgot BTN -->
 
     <div class="q-py-md">
-      <q-btn class="glossy" to="/forgot-window" dense rounded style="width: 150px" label="forgot" />
+      <q-btn
+        class="glossy"
+        to="/forgot-window"
+        dense
+        rounded
+        style="width: 150px"
+        label="forgot"
+      />
     </div>
+    <loginBtn />
   </div>
 </template>
 
@@ -136,8 +146,8 @@ import { defineComponent } from "vue";
 import { ref } from "vue";
 import loginLogo from "components/Login-logo.vue";
 import loginBtn from "components/Login-btn.vue";
-export default defineComponent ({
-  components: { loginLogo , loginBtn },
+export default defineComponent({
+  components: { loginLogo, loginBtn },
 
   // name: 'PageName',
   setup() {
@@ -170,5 +180,4 @@ export default defineComponent ({
 
 .body-color
   background-color: blue
-
 </style>

@@ -1,9 +1,10 @@
 <template>
-  <div class="flex-center">
+  <div class="flex-center absolute-center">
     <q-avatar size="150px" class="fx-pic" >
       <img src="../assets/login.png" />
     </q-avatar>
   </div>
+
 </template>
 
 <script>
@@ -18,7 +19,6 @@ body {
 
 div {
   top: calc(50% - 100px);
-  left: calc(50% - 100px);
   width: 200px;
   height: 200px;
   border-radius: 50%;
