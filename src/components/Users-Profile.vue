@@ -14,7 +14,7 @@
       </q-btn>
       <img
         src="../assets/avator/avatar2.jpeg"
-        style="max-width: 100%; max-height: 400px"
+        style="max-width: 100%; max-height: 400px ; border-radius: 20px"
       />
       <div class="row flex-center my-pic" style="width: 100%">
         <q-avatar size="200px">

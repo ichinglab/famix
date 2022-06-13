@@ -62,7 +62,17 @@
                   <!-- <div class="text-subtitle2">by Name</div> -->
                   <q-btn flat dense round color="primary" icon="favorite" />
                   <q-btn flat dense round color="primary" icon="bookmark" />
-                  <q-btn flat dense round color="primary" icon="share" />
+                  <q-btn flat dense round color="primary" icon="share">
+                    <ShareNetwork
+                      network="facebook"
+                      url="https://news.vuejs.org/issues/180"
+                      title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+                      description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+                      quote="The hot reload is so fast it\'s near instant. - Evan You"
+                      hashtags="vuejs,vite"
+                    >
+                    </ShareNetwork>
+                  </q-btn>
                 </q-card-section>
                 <q-card-section class="q-pt-none">
                   {{ post.details }}
@@ -294,7 +304,7 @@ const posts = [
     time: "11:08 PM",
   },
 ];
-import { defineComponent } from "vue";
+import { defineComponent , Vue } from "vue";
 import { ref } from "vue";
 import createPost from "components/create-post.vue";
 import usersFriends from "components/Users-Friends.vue";
@@ -302,8 +312,15 @@ import usersJobs from "components/Users-Jobs.vue";
 import usersProfile from "components/Users-Profile.vue";
 import usersSettings from "components/Users-Settings.vue";
 export default defineComponent({
-  components: { createPost, usersFriends, usersJobs, usersProfile , usersSettings},
+  components: {
+    createPost,
+    usersFriends,
+    usersJobs,
+    usersProfile,
+    usersSettings,
+  },
   name: "IndexPage",
+
   setup() {
     return {
       tab: ref("feed"),
