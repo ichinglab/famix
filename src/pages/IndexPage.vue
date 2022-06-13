@@ -94,21 +94,26 @@
         <!-- Job Section -->
 
         <q-tab-panel name="jobs">
-          <div class="text-h6">Jobs</div>
-          Jobs Working !
+          <div class="text-h6">
+            <usersJobs />
+          </div>
         </q-tab-panel>
 
         <!-- Friends Section -->
 
         <q-tab-panel name="friends">
-          <div class="text-h6">Friends</div>
-          Friends Working !
+          <div class="text-h6">
+            <usersFriends />
+          </div>
+
         </q-tab-panel>
 
         <!-- Profile Section -->
 
         <q-tab-panel name="profile">
-          <div class="text-h6">Profile</div>
+          <div class="text-h6">
+            <usersProfile />
+          </div>
           Profile Working !
         </q-tab-panel>
       </q-tab-panels>
@@ -282,8 +287,11 @@ const posts = [
 import { defineComponent } from "vue";
 import { ref } from "vue";
 import createPost from "components/create-post.vue";
+import usersFriends from "components/Users-Friends.vue";
+import usersJobs from "components/Users-Jobs.vue";
+import usersProfile from "components/Users-Profile.vue";
 export default defineComponent({
-  components: { createPost },
+  components: { createPost , usersFriends  , usersJobs , usersProfile},
   name: "IndexPage",
   setup() {
     return {
