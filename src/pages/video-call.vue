@@ -16,7 +16,7 @@
       </q-avatar>
     </div>
     <q-list>
-      <q-item>
+      <q-item class="flex-center">
         <div class="flex-center">
           <p class="rejoan-tex">Foreigner Version</p>
         </div>
@@ -27,22 +27,57 @@
       <q-item class="row flex-center">
         <p class="text-h6 text-red">Camera Not Connected!</p>
       </q-item>
+      <q-item style="height: 300px; width: 300px" class="flex-center">
+        <div class="row text-center">
+          <open-camera />
+        </div>
+      </q-item>
     </q-list>
 
     <div class="q-pa-md fixed-bottom">
       <div class="row flex-center">
-        <q-btn color="grey-9" round dense size="20px" class="q-mr-lg" icon="group_add"></q-btn>
-        <q-btn color="grey-9" round dense size="20px" class="q-mr-lg" icon="videocam_off"></q-btn>
-        <q-btn color="grey-9" round dense size="20px" class="q-mr-lg" icon="settings_voice"></q-btn>
-        <q-btn color="red" round dense size="20px" class="q-mr-lg" to="/messenger-section" icon="call_end"></q-btn>
+        <q-btn
+          color="grey-9"
+          round
+          dense
+          size="20px"
+          class="q-mr-lg"
+          icon="group_add"
+        ></q-btn>
+        <q-btn
+          color="grey-9"
+          round
+          dense
+          size="20px"
+          class="q-mr-lg"
+          icon="videocam_off"
+        ></q-btn>
+        <q-btn
+          color="grey-9"
+          round
+          dense
+          size="20px"
+          class="q-mr-lg"
+          icon="settings_voice"
+        ></q-btn>
+        <q-btn
+          color="red"
+          round
+          dense
+          size="20px"
+          class="q-mr-lg"
+          to="/messenger-section"
+          icon="call_end"
+        ></q-btn>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import OpenCamera from "src/components/open-camera.vue";
 export default {
-  // name: 'PageName',
+  components: { OpenCamera },
 };
 </script>
 
