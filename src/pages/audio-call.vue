@@ -16,6 +16,7 @@
         size="20px"
         round
         flat
+        to="/video-call"
         color="black"
       ></q-btn>
     </q-toolbar>
@@ -57,4 +58,5 @@ export default {
 <style lang="sass" scoped>
 .rejoan-tex
   font-size:30px
+
 </style>
