@@ -15,8 +15,8 @@
         <q-toolbar-title>
           <q-item clickable to="/IndexPage">Jane </q-item>
         </q-toolbar-title>
-        <q-btn icon="phone_enabled" dense flat size="18px" round></q-btn>
-        <q-btn icon="video_call" dense flat size="18px" round></q-btn>
+        <q-btn icon="phone_enabled" dense flat size="18px" to="/audio-call" round></q-btn>
+        <q-btn icon="video_call" dense flat size="18px" to="/video-call" round></q-btn>
       </q-toolbar>
     </q-header>
     <div class="q-pa-md flex-center row">

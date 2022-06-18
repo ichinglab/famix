@@ -29,6 +29,8 @@ const routes = [
     component: () => import('layouts/ChatLayout.vue'),
     children: [
       { path: '/messenger-section', component: () => import('pages/messenger-section.vue') },
+      { path: '/audio-call', component: () => import('pages/audio-call.vue') },
+      { path: '/video-call', component: () => import('pages/video-call.vue') },
     ]
   },
 
