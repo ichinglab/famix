@@ -34,7 +34,7 @@
         <q-btn color="grey-9" round dense size="20px" class="q-mr-lg" icon="group_add"></q-btn>
         <q-btn color="grey-9" round dense size="20px" class="q-mr-lg" icon="videocam_off"></q-btn>
         <q-btn color="grey-9" round dense size="20px" class="q-mr-lg" icon="settings_voice"></q-btn>
-        <q-btn color="red" round dense size="20px" class="q-mr-lg" icon="call_end"></q-btn>
+        <q-btn color="red" round dense size="20px" class="q-mr-lg" to="/messenger-section" icon="call_end"></q-btn>
       </div>
     </div>
   </div>
