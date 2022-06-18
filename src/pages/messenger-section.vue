@@ -68,7 +68,7 @@
                   </template>
                 </q-input>
               </div>
-              <div>
+              <div class="col-1">
                 <q-btn round type="submit" size="25px" dense flat icon="send" />
               </div>
             </div>
