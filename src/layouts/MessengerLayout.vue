@@ -3,7 +3,7 @@
     <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated class="bg-green">
+    <q-header elevated class="bg-blue">
       <q-toolbar>
         <!-- <q-btn
           flat

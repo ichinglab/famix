@@ -1,5 +1,24 @@
 <template>
   <div>
+    <q-header elevated class="bg-blue">
+      <q-toolbar>
+        <q-btn
+          icon="arrow_back_ios_new"
+          to="/chat-page"
+          round
+          flat
+          color="black"
+        ></q-btn>
+        <q-avatar>
+          <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
+        </q-avatar>
+        <q-toolbar-title>
+          <q-item clickable to="/IndexPage">Jane </q-item>
+        </q-toolbar-title>
+        <q-btn icon="phone_enabled" dense flat size="18px" round></q-btn>
+        <q-btn icon="video_call" dense flat size="18px" round></q-btn>
+      </q-toolbar>
+    </q-header>
     <div class="q-pa-md flex-center row">
       <div style="width: 100%; max-width: 1200px">
         <div>
@@ -50,7 +69,7 @@
         <div class="q-pa-md q-gutter-md fixed-bottom">
           <q-form @submit="onSubmit">
             <div class="row flex-center">
-              <div class="col-10" >
+              <div class="col-10">
                 <q-input
                   v-model="name"
                   bottom-slots
