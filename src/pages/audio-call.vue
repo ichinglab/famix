@@ -21,14 +21,14 @@
       ></q-btn>
     </q-toolbar>
   </q-header>
-  <div class="row flex-center q-pa-md">
+  <div class="flex-center q-pa-md">
     <div class="q-pa-md row flex-center">
       <q-avatar size="100px">
         <img src="https://cutt.ly/rKpEpRh" />
       </q-avatar>
     </div>
     <q-list>
-      <q-item>
+      <q-item class="flex-center">
         <div class="flex-center">
           <p class="rejoan-tex">Foreigner Version</p>
         </div>

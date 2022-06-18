@@ -9,7 +9,7 @@
       ></q-btn>
     </q-toolbar>
   </q-header>
-  <div class="row body flex-center q-pa-md">
+  <div class=" body flex-center q-pa-md">
     <div class="q-pa-md row flex-center">
       <q-avatar size="100px">
         <img src="https://cutt.ly/rKpEpRh" />

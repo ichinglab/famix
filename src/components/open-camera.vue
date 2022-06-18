@@ -1,44 +1,38 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <video autoplay ref="videoplay"></video>
-    </div>
-    <div class="col-12">
-      <q-btn
-        flat
-        icon="play_arrow"
-        size="30px"
-        round
-        dense
-        :disable="!enableCamera"
-        @click="useCamera"
-        color="red"
-      ></q-btn>
+  <div>
+    <q-btn color="primary" label="Get Picture" @click="captureImage" />
 
-    </div>
+    <img :src="imageSrc">
   </div>
 </template>
 
 <script>
+import { useQuasar } from 'quasar'
+import { ref } from 'vue'
+
 export default {
-  // name: 'ComponentName',
-  setup() {
-    return {
-      enableCamera: false,
-    };
-  },
-  mounted (){
-    if (navigator.mediaDevices.getUserMedia) {
-      this.enableCamera = true
+  data () {
+    const $q = useQuasar()
+    const imageSrc = ref('')
+
+    function captureImage () {
+      navigator.camera.getPicture(
+        data => { // on success
+          imageSrc.value = `data:image/jpeg;base64,${data}`
+        },
+        () => { // on fail
+          $q.notify('Could not access device camera.')
+        },
+        {
+          // camera options
+        }
+      )
     }
-  },
-  methods: {
-    useCamera (){
-      navigator.mediaDevices.getUserMedia({ video: true})
-      .then(mediaStream => {
-      this.$refs.videoplay.srcObject = mediaStream
-      })
+
+    return {
+      imageSrc,
+      captureImage
     }
   }
-};
+}
 </script>
