@@ -50,7 +50,7 @@
         <div class="q-pa-md q-gutter-md fixed-bottom">
           <q-form @submit="onSubmit">
             <div class="row flex-center">
-              <div class="col-10">
+              <div class="col-10" >
                 <q-input
                   v-model="name"
                   bottom-slots
@@ -68,7 +68,7 @@
                   </template>
                 </q-input>
               </div>
-              <div class="col-2">
+              <div>
                 <q-btn round type="submit" size="25px" dense flat icon="send" />
               </div>
             </div>
