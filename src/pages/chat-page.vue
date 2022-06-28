@@ -16,14 +16,12 @@
         </q-item-label>
       </q-item>
     </q-list>
-    <!-- <NewChat /> -->
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
-// import NewChat from "src/components/new-chat.vue";
 const users = [
   {
     id: 1,

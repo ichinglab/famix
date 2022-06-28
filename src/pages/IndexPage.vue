@@ -23,7 +23,7 @@
         <!-- Feed Section -->
 
         <q-tab-panel name="feed">
-          <div row flex-center>
+          <div>
             <!-- create post components -->
             <div class="my-post">
               <createPost />
@@ -108,7 +108,7 @@
         <!-- Job Section -->
 
         <q-tab-panel name="jobs">
-          <div class="text-h6">
+          <div>
             <usersJobs />
           </div>
         </q-tab-panel>
@@ -116,7 +116,7 @@
         <!-- Friends Section -->
 
         <q-tab-panel name="friends">
-          <div class="text-h6">
+          <div>
             <usersFriends />
           </div>
         </q-tab-panel>
@@ -124,7 +124,7 @@
         <!-- Profile Section -->
 
         <q-tab-panel name="profile">
-          <div class="text-h6">
+          <div>
             <usersProfile />
           </div>
         </q-tab-panel>
@@ -132,7 +132,7 @@
         <!-- Settings -->
 
         <q-tab-panel name="settings">
-          <div class="text-h6">
+          <div>
             <usersSettings />
           </div>
         </q-tab-panel>
@@ -304,7 +304,7 @@ const posts = [
     time: "11:08 PM",
   },
 ];
-import { defineComponent , Vue } from "vue";
+import { defineComponent, Vue } from "vue";
 import { ref } from "vue";
 import createPost from "components/create-post.vue";
 import usersFriends from "components/Users-Friends.vue";
