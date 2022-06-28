@@ -1,10 +1,10 @@
 <template>
-  <div class="q-pa-md">
+  <div class="row flex-center" >
     <q-list
       v-for="n in 5"
       :key="n"
       class="text-weight-bolder"
-      style="width: 100%"
+      style="width:300px"
     >
       <q-item
         v-for="user in users"

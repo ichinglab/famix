@@ -6,7 +6,7 @@
       size="13px"
       rounded
       outline
-      style="width: 400px"
+      style="width: 300px"
       label="post your job"
       icon-right="edit"
       @click="dialogRegister = true"

@@ -3,7 +3,7 @@
     <loginLogo />
   </div>
 
-  <div class="q-pa-md absolute-center">
+  <div class="q-pa-md row flex-center">
     <!-- Login BTN -->
     <div class="q-py-md">
       <q-btn
@@ -18,7 +18,7 @@
 
     <!-- Register BTN -->
 
-    <div>
+    <div class="q-pa-md row flex-center">
       <q-btn
         class="glossy"
         dense
@@ -73,7 +73,7 @@
 
           <q-card-section class="q-pa-md absolute-center">
             <div>
-              
+
               <q-input
                 outlined
                 dense
