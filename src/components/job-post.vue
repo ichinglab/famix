@@ -35,27 +35,13 @@
             <q-input
               outlined
               dense
+              bottom-slots
+              autogrow
               class="q-py-md"
               rounded
               style="width: 300px"
-              label="Phone"
+              label="post here"
             ></q-input>
-            <q-input
-              outlined
-              dense
-              rounded
-              style="width: 300px"
-              label="Email"
-            ></q-input>
-            <q-input
-              v-model="password"
-              rounded
-              outlined
-              label="Password"
-              dense
-              class="q-py-md"
-            >
-            </q-input>
           </div>
           <div class="q-pa-md row flex-center">
             <q-btn

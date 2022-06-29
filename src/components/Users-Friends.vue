@@ -1,9 +1,9 @@
 <template>
   <div class="row flex-center" >
     <q-list
-      v-for="n in 5"
+      v-for="n in 8"
       :key="n"
-      class="text-weight-bolder"
+      class="text-weight-bolder "
       style="width:300px"
     >
       <q-item
