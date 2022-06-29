@@ -120,7 +120,9 @@ import { ref } from "vue";
 import loginLogo from "components/Login-logo.vue";
 import loginBtn from "components/Login-btn.vue";
 export default defineComponent({
-  components: { loginLogo, loginBtn },
+  components: {
+    loginLogo, loginBtn
+    },
 
   // name: 'PageName',
   setup() {
