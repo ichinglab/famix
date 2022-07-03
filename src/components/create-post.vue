@@ -1,145 +1,98 @@
 <template>
-  <div class="q-pa-md">
-    <div class="q-gutter-md">
-      <q-input
-        v-model="createPost"
-        bottom-slots
-        outlined
-        rounded
-        clearable
-        dense
-        autogrow
-        color="green"
-        label="Post Here"
-        :shadow-text="textareaShadowText"
-        @keydown="processTextareaFill"
-        @focus="processTextareaFill"
-      >
-        <template v-slot:before>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
-          </q-avatar>
-        </template>
-        <template v-slot:after>
-          <q-btn round dense flat icon="send" />
-        </template>
-      </q-input>
-    </div>
+  <div>
+    <q-btn
+      color="green"
+      dence
+      size="13px"
+
+      outline
+      style="width: 300px"
+      label="post something"
+      icon-right="edit"
+      @click="dialogRegister = true"
+    />
+    <q-dialog
+      v-model="dialogRegister"
+      persistent
+      :maximized="maximizedToggle"
+      transition-show="slide-up"
+      transition-hide="slide-down"
+    >
+      <q-card class="bg-black text-white">
+        <q-bar>
+          <q-space />
+          <q-btn dense flat icon="close" v-close-popup>
+            <q-tooltip class="bg-white text-primary">Close</q-tooltip>
+          </q-btn>
+        </q-bar>
+
+        <q-card-section>
+          <div class="text-h6 row flex-center">Post something on your mind</div>
+        </q-card-section>
+
+        <q-card-section class="q-pa-md absolute-center">
+          <div>
+            <q-input
+              outlined
+              dense
+              bottom-slots
+              autogrow
+              class="q-py-md"
+              rounded
+              style="width: 300px"
+              label="post here"
+            ></q-input>
+          </div>
+          <div class="q-pa-md row flex-center">
+            <q-btn
+              class="glossy"
+              dense
+              type="submit"
+              rounded
+              style="width: 150px"
+              label="post now"
+              to="/IndexPage"
+            />
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
 <script>
-import { event } from "quasar";
-import { ref, computed } from "vue";
-
-const { stopAndPrevent } = event;
-
-export default {
+import { defineComponent } from "vue";
+import { ref } from "vue";
+export default defineComponent({
+  // name: 'PageName',
   setup() {
-    const inputModel = ref("");
-    const inputFillCancelled = ref(false);
-    const inputShadowText = computed(() => {
-      if (inputFillCancelled.value === true) {
-        return "";
-      }
-
-      const t = "Text filled when you press TAB";
-      const empty =
-        typeof inputModel.value !== "string" || inputModel.value.length === 0;
-
-      if (empty === true) {
-        return t;
-      } else if (t.indexOf(inputModel.value) !== 0) {
-        return "";
-      }
-
-      return t.split(inputModel.value).slice(1).join(inputModel.value);
-    });
-
-    const createPost = ref("");
-    const textareaFillCancelled = ref(false);
-    const textareaShadowText = computed(() => {
-      if (textareaFillCancelled.value === true) {
-        return "";
-      }
-
-      const t =
-          "This text\nwill be filled\non multiple lines\nwhen you press TAB",
-        empty =
-          typeof createPost.value !== "string" ||
-          createPost.value.length === 0;
-
-      if (empty === true) {
-        return t.split("\n")[0];
-      } else if (t.indexOf(createPost.value) !== 0) {
-        return "";
-      }
-
-      return t
-        .split(createPost.value)
-        .slice(1)
-        .join(createPost.value)
-        .split("\n")[0];
-    });
+    const dialog = ref(false);
+    const position = ref("top");
 
     return {
-      inputModel,
-      inputFillCancelled,
-      inputShadowText,
+      dialog,
+      position,
+      fullHeight: ref(false),
+      dialogRegister: ref(false),
+      maximizedToggle: ref(true),
+      password: ref(""),
+      isPwd: ref(true),
+      email: ref(""),
+      tel: ref(""),
 
-      processInputFill(e) {
-        if (e === void 0) {
-          return;
-        }
-
-        if (e.keyCode === 27) {
-          if (inputFillCancelled.value !== true) {
-            inputFillCancelled.value = true;
-          }
-        } else if (e.keyCode === 9) {
-          if (
-            inputFillCancelled.value !== true &&
-            this.inputShadowText.length > 0
-          ) {
-            stopAndPrevent(e);
-            inputModel.value =
-              (typeof inputModel.value === "string" ? inputModel.value : "") +
-              this.inputShadowText;
-          }
-        } else if (inputFillCancelled.value === true) {
-          inputFillCancelled.value = false;
-        }
-      },
-
-      createPost,
-      textareaFillCancelled,
-      textareaShadowText,
-
-      processTextareaFill(e) {
-        if (e === void 0) {
-          return;
-        }
-
-        if (e.keyCode === 27) {
-          if (textareaFillCancelled.value !== true) {
-            textareaFillCancelled.value = true;
-          }
-        } else if (e.keyCode === 9) {
-          if (
-            textareaFillCancelled.value !== true &&
-            this.textareaShadowText.length > 0
-          ) {
-            stopAndPrevent(e);
-            createPost.value =
-              (typeof createPost.value === "string"
-                ? createPost.value
-                : "") + this.textareaShadowText;
-          }
-        } else if (textareaFillCancelled.value === true) {
-          textareaFillCancelled.value = false;
-        }
+      open(pos) {
+        position.value = pos;
+        dialog.value = true;
       },
     };
   },
-};
+});
 </script>
+<style lang="sass" scoped>
+.my-card
+  width: 100%
+  max-width: 250px
+
+.body-color
+  background-color: blue
+</style>

@@ -15,9 +15,16 @@
                 <span class="q-pa-md name-texttt text-bold">
                   {{ post.name }}
                 </span>
-                <span class="text-h7"> {{ post.time }} </span>
+                <span class="text-h7">
+                  {{ post.time }}
+                  <q-tooltip class="bg-black text-white">{{
+                    post.time
+                  }}</q-tooltip>
+                </span>
                 <span>
-                  <q-btn flat size="10px" round icon="public"></q-btn>
+                  <q-btn flat size="10px" round icon="public">
+                    <q-tooltip class="bg-black text-white">Public</q-tooltip>
+                  </q-btn>
                 </span>
               </div>
             </div>
@@ -26,8 +33,12 @@
         <q-card-section class="row">
           <div class="text-h6">{{ post.title }}</div>
           <q-space />
-          <q-btn flat dense round color="primary" icon="favorite" />
-          <q-btn flat dense round color="primary" icon="bookmark" />
+          <q-btn flat dense round color="primary" icon="favorite">
+            <q-tooltip class="bg-black text-white">Love</q-tooltip>
+          </q-btn>
+          <q-btn flat dense round color="primary" icon="bookmark">
+            <q-tooltip class="bg-black text-white">Save Post</q-tooltip>
+          </q-btn>
           <q-btn flat dense round color="primary" icon="share">
             <ShareNetwork
               network="facebook"
@@ -38,6 +49,7 @@
               hashtags="vuejs,vite"
             >
             </ShareNetwork>
+            <q-tooltip class="bg-black text-white">Share Network</q-tooltip>
           </q-btn>
         </q-card-section>
         <q-card-section class="q-pt-none">
