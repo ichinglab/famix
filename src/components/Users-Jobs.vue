@@ -33,13 +33,13 @@
         <q-card-section class="row">
           <div class="text-h6">{{ post.title }}</div>
           <q-space />
-          <q-btn flat dense round color="primary" icon="favorite">
+          <q-btn flat dense round color="light-blue-13" icon="favorite">
             <q-tooltip class="bg-black text-white">Love</q-tooltip>
           </q-btn>
-          <q-btn flat dense round color="primary" icon="bookmark">
+          <q-btn flat dense round color="light-blue-13" icon="bookmark">
             <q-tooltip class="bg-black text-white">Save Post</q-tooltip>
           </q-btn>
-          <q-btn flat dense round color="primary" icon="share">
+          <q-btn flat dense round color="light-blue-13" icon="share">
             <ShareNetwork
               network="facebook"
               url="https://news.vuejs.org/issues/180"

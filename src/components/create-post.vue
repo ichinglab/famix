@@ -1,7 +1,7 @@
 <template>
   <div>
     <q-btn
-      color="green"
+      color="light-blue-13"
       dence
       size="13px"
 

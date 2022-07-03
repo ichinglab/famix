@@ -25,7 +25,7 @@
           <q-btn
             round
             dence
-            color="green"
+            color="light-blue-13"
             flat
             size="10px"
             icon="people"
