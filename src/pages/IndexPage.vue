@@ -4,7 +4,6 @@
       <q-tabs
         v-model="tab"
         dense
-        narrow-indicator
         active-color="light-blue-13"
         indicator-color="light-blue-13"
       >

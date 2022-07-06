@@ -1,13 +1,12 @@
 <template>
   <div>
-    <q-header elevated class="bg-blue">
+    <q-header elevated class="bg-light-blue-13">
       <q-toolbar>
         <q-btn
           icon="arrow_back_ios_new"
           to="/chat-page"
           round
           flat
-          color="black"
         ></q-btn>
         <q-avatar>
           <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
@@ -15,8 +14,22 @@
         <q-toolbar-title>
           <q-item clickable to="/IndexPage">Jane </q-item>
         </q-toolbar-title>
-        <q-btn icon="phone_enabled" dense flat size="18px" to="/audio-call" round></q-btn>
-        <q-btn icon="video_call" dense flat size="18px" to="/video-call" round></q-btn>
+        <q-btn
+          icon="phone_enabled"
+          dense
+          flat
+          size="18px"
+          to="/audio-call"
+          round
+        ></q-btn>
+        <q-btn
+          icon="video_call"
+          dense
+          flat
+          size="18px"
+          to="/video-call"
+          round
+        ></q-btn>
       </q-toolbar>
     </q-header>
     <div class="q-pa-md flex-center row">
@@ -40,7 +53,7 @@
             size="6"
             stamp="4 minutes ago"
             text-color="white"
-            bg-color="primary"
+            bg-color="light-blue-13"
           />
           <q-chat-message
             name="Jane"
@@ -49,7 +62,7 @@
             stamp="1 minutes ago"
             size="8"
             text-color="white"
-            bg-color="primary"
+            bg-color="light-blue-13"
           />
           <q-chat-message
             v-for="(item, index) in submitResult"
@@ -65,8 +78,7 @@
         </div>
 
         <!-- Chat Input -->
-
-        <div class="q-pa-md q-gutter-md fixed-bottom">
+        <q-footer elevated class="bg-black">
           <q-form @submit="onSubmit">
             <div class="row flex-center">
               <div class="col-10">
@@ -92,7 +104,34 @@
               </div>
             </div>
           </q-form>
-        </div>
+        </q-footer>
+        <!-- <div class="q-pa-md q-gutter-md fixed-bottom">
+          <q-form @submit="onSubmit">
+            <div class="row flex-center">
+              <div class="col-10">
+                <q-input
+                  v-model="name"
+                  bottom-slots
+                  name="name"
+                  outlined
+                  clearable
+                  rounded
+                  dense
+                  color="green"
+                >
+                  <template v-slot:before>
+                    <q-avatar size="43px">
+                      <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
+                    </q-avatar>
+                  </template>
+                </q-input>
+              </div>
+              <div class="col-1">
+                <q-btn round type="submit" size="25px" dense flat icon="send" />
+              </div>
+            </div>
+          </q-form>
+        </div> -->
       </div>
     </div>
   </div>
