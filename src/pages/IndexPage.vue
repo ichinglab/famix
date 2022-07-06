@@ -149,6 +149,22 @@
         </q-tab-panel>
       </q-tab-panels>
     </div>
+    <q-page-scroller
+      position="bottom-right"
+      :scroll-offset="150"
+      :offset="[18, 18]"
+    >
+      <q-btn
+        round
+        dense
+        flat
+        size="20px"
+        icon="keyboard_arrow_up"
+        color="light-blue-13"
+      >
+        <q-tooltip class="bg-black text-white">Famix Home</q-tooltip>
+      </q-btn>
+    </q-page-scroller>
   </div>
 </template>
 

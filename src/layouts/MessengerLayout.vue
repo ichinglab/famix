@@ -3,8 +3,8 @@
     <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated class="bg-blue">
-      <q-toolbar>
+    <q-header class="bg-light-blue-13" reveal elevated>
+      <q-toolbar dence>
         <!-- <q-btn
           flat
           round
@@ -19,7 +19,7 @@
         </q-toolbar-title>
       </q-toolbar>
 
-      <q-tabs>
+      <q-tabs dense indicator-color="white" inline-label>
         <q-route-tab icon="whatsapp" to="/chat-page" replace label="Chats" />
         <q-route-tab
           icon="fiber_manual_record"
@@ -29,6 +29,7 @@
         />
       </q-tabs>
     </q-header>
+    
 
     <!-- (Optional) The Footer -->
     <!-- <q-footer>
