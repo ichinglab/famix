@@ -1,10 +1,17 @@
 <template>
   <div class="flex-center absolute-center">
-    <q-avatar size="150px" class="fx-pic" >
+    <q-avatar size="150px" class="fx-pic">
       <img src="../assets/login.png" />
     </q-avatar>
+    <div>
+      <marquee
+        style="font-size: 16rem"
+        class="tw-text-9xl tw-text-lightOrange tw-font-bold min"
+      >
+        Welcome to FAMIX CHAT
+      </marquee>
+    </div>
   </div>
-
 </template>
 
 <script>
