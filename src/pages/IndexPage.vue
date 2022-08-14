@@ -18,7 +18,7 @@
     <q-separator />
 
     <div class="row flex-center">
-      <q-tab-panels v-model="tab" animated>
+      <q-tab-panels v-model="tab" swipeable animated>
         <!-- Feed Section -->
 
         <q-tab-panel name="feed">

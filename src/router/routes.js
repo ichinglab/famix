@@ -8,12 +8,14 @@ const routes = [
       { path: '/reg-window', component: () => import('pages/reg-window.vue') },
       { path: '/forgot-window', component: () => import('pages/forgot-window.vue') },
     ]
+
   },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '/IndexPage', component: () => import('pages/IndexPage.vue') },
+      { path: '/test', component: () => import('components/test-check.vue') },
     ]
   },
   {
