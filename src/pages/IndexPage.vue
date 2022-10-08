@@ -376,6 +376,8 @@ export default defineComponent({
 .name-texttt
   font-size: 15px
 
+
+
 .my-post
   // padding: -1px
   margin: -15px
