@@ -361,7 +361,7 @@ export default defineComponent({
 <style lang="sass" scoped>
 .my-card
   width: 100%
-  max-width: 1250px
+  max-width: 450px
 
 .row > div
   // padding: 10px 15px

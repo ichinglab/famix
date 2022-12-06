@@ -98,7 +98,7 @@
             </template>
           </q-input>
         </div>
-        <div class="q-pa-md">
+        <div class="q-pa-md row flex-center">
           <q-btn
             class="glossy"
             dense
@@ -106,7 +106,6 @@
             rounded
             style="width: 150px"
             label="register now"
-            to=""
           />
         </div>
       </q-card-section>
@@ -139,15 +138,6 @@
           <q-input
             outlined
             dense
-            class="q-py-md"
-            type="tel"
-            rounded
-            style="width: 300px"
-            label="Phone"
-          ></q-input>
-          <q-input
-            outlined
-            dense
             rounded
             type="email"
             style="width: 300px"
@@ -172,15 +162,15 @@
             </template>
           </q-input>
         </div>
-        <div class="q-pa-md">
+        <div class="q-pa-md row flex-center">
           <q-btn
             class="glossy"
             dense
             type="submit"
             rounded
             style="width: 150px"
-            label="register now"
-            to=""
+            label="Login"
+            to="/IndexPage"
           />
         </div>
       </q-card-section>
