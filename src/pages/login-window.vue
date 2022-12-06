@@ -31,8 +31,8 @@
 
   <div class="q-py-md row flex-center">
     <q-btn
+      disable
       class="glossy"
-      to="/forgot-window"
       dense
       rounded
       style="width: 150px"
