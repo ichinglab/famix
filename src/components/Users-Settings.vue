@@ -10,10 +10,8 @@
         to="/"
       />
     </div>
-    <div>
-      <router-link to="test">Hello</router-link>
-    </div>
-    <q-footer class="bg-green text-center text-black"  > @Famix Team </q-footer>
+
+    <q-footer class="bg-green text-center text-black"> @Famix Team </q-footer>
   </div>
 </template>
 
