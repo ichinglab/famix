@@ -10,6 +10,7 @@
         to="/"
       />
     </div>
+    <div class="row flex-center"></div>
 
     <q-footer class="bg-green text-center text-black"> @Famix Team </q-footer>
   </div>

@@ -34,12 +34,13 @@
       class="glossy"
       to="/forgot-window"
       dense
+      disable
       rounded
       style="width: 150px"
       label="forgot"
     />
   </div>
-  <loginBtn />
+  <!-- <loginBtn /> -->
   <q-dialog
     v-model="dialogRegister"
     persistent
@@ -48,7 +49,7 @@
     transition-hide="slide-down"
   >
     <q-card class="bg-black text-white">
-      <loginBtn />
+      <!-- <loginBtn /> -->
       <q-bar>
         <q-space />
         <q-btn dense flat icon="close" v-close-popup>
@@ -119,7 +120,7 @@
     transition-hide="slide-down"
   >
     <q-card class="bg-black text-white">
-      <loginBtn />
+      <!-- <loginBtn /> -->
       <q-bar>
         <q-space />
         <q-btn dense flat icon="close" v-close-popup>
@@ -182,11 +183,11 @@
 import { defineComponent } from "vue";
 import { ref } from "vue";
 import loginLogo from "components/Login-logo.vue";
-import loginBtn from "components/Login-btn.vue";
+// import loginBtn from "components/Login-btn.vue";
 export default defineComponent({
   components: {
     loginLogo,
-    loginBtn,
+    // loginBtn,
   },
 
   // name: 'PageName',
