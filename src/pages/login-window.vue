@@ -29,17 +29,16 @@
   </div>
   <!-- Forgot BTN -->
 
-  <div class="q-py-md row flex-center">
+  <!-- <div class="q-py-md row flex-center">
     <q-btn
       class="glossy"
       to="/forgot-window"
       dense
-      disable
       rounded
       style="width: 150px"
       label="forgot"
     />
-  </div>
+  </div> -->
   <!-- <loginBtn /> -->
   <q-dialog
     v-model="dialogRegister"
