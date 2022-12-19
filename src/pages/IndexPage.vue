@@ -142,7 +142,7 @@
         <!-- Settings -->
 
         <q-tab-panel name="settings">
-          <div style="width: 300px">
+          <div>
             <usersSettings />
           </div>
         </q-tab-panel>
