@@ -200,6 +200,102 @@
           <div class="collom">Manage your payment settings, see your payment history and access live chat support.</div>
         </div>
       </div>
+      <div class="row">
+      <div class="text-h4 q-py-md">Ads</div>
+      <div class="text-h7 q-py-md">
+        Manage settings related to permissions, ads, Off-Facebook activity and
+        other account information.
+      </div>
+      <div class="row q-py-sm">
+        <div class="col-2">
+          <q-btn unelevated icon="ads_click"></q-btn>
+        </div>
+        <div class="col-10">
+          <div class="collom text-bold ">Ad preferences</div>
+          <div class="collom">Update your name and contact information connected to your Facebook account. </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="text-h4 q-py-md">Stories</div>
+      <div class="text-h7 q-py-md">
+        Manage settings related to permissions, ads, Off-Facebook activity and
+        other account information.
+      </div>
+      <div class="row q-py-sm">
+        <div class="col-2">
+          <q-btn unelevated icon="collections"></q-btn>
+        </div>
+        <div class="col-10">
+          <div class="collom text-bold ">Stories</div>
+          <div class="collom">Update your name and contact information connected to your Facebook account. </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="text-h4 q-py-md">Notifications</div>
+      <div class="text-h7 q-py-md">
+        Manage settings related to permissions, ads, Off-Facebook activity and
+        other account information.
+      </div>
+      <div class="row q-py-sm">
+        <div class="col-2">
+          <q-btn unelevated icon="collections"></q-btn>
+        </div>
+        <div class="col-10">
+          <div class="collom text-bold ">Notification Settings</div>
+          <div class="collom">Update your name and contact information connected to your Facebook account. </div>
+        </div>
+      </div>
+      <div class="row q-py-sm">
+        <div class="col-2">
+          <q-btn unelevated icon="collections"></q-btn>
+        </div>
+        <div class="col-10">
+          <div class="collom text-bold ">Text messaging</div>
+          <div class="collom">Update your name and contact information connected to your Facebook account. </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="text-h4 q-py-md">Media</div>
+      <div class="text-h7 q-py-md">
+        Manage settings related to permissions, ads, Off-Facebook activity and
+        other account information.
+      </div>
+      <div class="row q-py-sm">
+        <div class="col-2">
+          <q-btn unelevated icon="collections"></q-btn>
+        </div>
+        <div class="col-10">
+          <div class="collom text-bold ">Photo quality</div>
+          <div class="collom">Update your name and contact information connected to your Facebook account. </div>
+        </div>
+      </div>
+      <div class="row q-py-sm">
+        <div class="col-2">
+          <q-btn unelevated icon="smart_display"></q-btn>
+        </div>
+        <div class="col-10">
+          <div class="collom text-bold ">Autoplay video</div>
+          <div class="collom">Update your name and contact information connected to your Facebook account. </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+
+      <div class="col-2">
+          <q-btn unelevated icon="help"></q-btn>
+        </div>
+        <div class="col-10"></div>
+        <div class="text-h4 q-py-md">Meta</div>
+      <div class="row q-py-sm">
+
+          <div class="collom text-bold ">Account Cecnter</div>
+          <div class="collom">Update your name and contact information connected to your Facebook account. </div>
+
+      </div>
+      </div>
     <div class="q-py-md row flex-center">
       <q-btn
         class="glossy"
