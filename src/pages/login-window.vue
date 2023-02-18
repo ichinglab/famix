@@ -59,56 +59,103 @@
       <q-card-section>
         <div class="text-h6 row flex-center">Wellcome To Famix Chat</div>
       </q-card-section>
-
-      <q-card-section class="q-pa-md absolute-center">
-        <div>
-          <q-input
-            outlined
-            dense
-            class="q-py-md"
-            type="tel"
-            rounded
-            style="width: 300px"
-            label="Phone"
-          ></q-input>
-          <q-input
-            outlined
-            dense
-            rounded
-            type="email"
-            style="width: 300px"
-            label="Email"
-          ></q-input>
-
-          <q-input
-            v-model="password"
-            rounded
-            outlined
-            label="Password"
-            dense
-            class="q-py-md"
-            :type="isPwd ? 'password' : 'text'"
-          >
-            <template v-slot:append>
-              <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
+      <q-form @submit.prevent="createUsers()" class="q-gutter-md">
+        <div class="row flex-center">
+          <q-card-section align="center" class="q-pa-md">
+            <div style="border: 1px solid white; border-radius: 5px">
+              <q-uploader
+                label="Upload Your Profile Picture"
+                color="black"
+                flat
+                @added="uploadProfileImg"
               />
-            </template>
-          </q-input>
+            </div>
+            <div>
+              <q-input
+                outlined
+                dense
+                class="q-py-md full-width"
+                type="text"
+                rounded
+                label="Full Name"
+                v-model="registerPayload.fullName"
+              ></q-input>
+              <q-input
+                outlined
+                dense
+                class="q-py-md full-width"
+                type="email"
+                rounded
+                v-model="registerPayload.email"
+                label="Email"
+              ></q-input>
+              <q-input
+                outlined
+                dense
+                class="q-py-md full-width"
+                type="tel"
+                rounded
+                label="Phone"
+                v-model="registerPayload.phoneNumber"
+              ></q-input>
+              <q-select
+                outlined
+                dense
+                class="q-py-md full-width"
+                rounded
+                label="Gender"
+                v-model="registerPayload.gender"
+                :options="genderOptions"
+              ></q-select>
+              <q-input
+                outlined
+                dense
+                rounded
+                class="full-width q-py-md"
+                label="Blood Group"
+                v-model="registerPayload.bloodGroup"
+              ></q-input>
+              <q-input
+                outlined
+                dense
+                rounded
+                class="full-width q-py-md"
+                label="Date of Birth"
+                v-model="registerPayload.dob"
+              ></q-input>
+
+              <q-input
+                v-model="registerPayload.password"
+                rounded
+                outlined
+                label="Password"
+                dense
+                class="q-py-md full-width"
+                :type="isPwd ? 'password' : 'text'"
+              >
+                <template v-slot:append>
+                  <q-icon
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
+            </div>
+            <div class="q-pa-md row flex-center">
+              <q-btn
+                class="glossy"
+                dense
+                type="submit"
+                no-caps
+                rounded
+                style="width: 150px"
+                label="Register Now"
+              />
+            </div>
+          </q-card-section>
         </div>
-        <div class="q-pa-md row flex-center">
-          <q-btn
-            class="glossy"
-            dense
-            type="submit"
-            rounded
-            style="width: 150px"
-            label="register now"
-          />
-        </div>
-      </q-card-section>
+      </q-form>
     </q-card>
   </q-dialog>
   <q-dialog
@@ -179,8 +226,12 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { ref } from "vue";
+import { defineComponent, ref, reactive } from "vue";
+import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
+import { UserService } from "src/services/user.service.js";
+import JwtDecode from "jwt-decode";
+
 import loginLogo from "components/Login-logo.vue";
 // import loginBtn from "components/Login-btn.vue";
 export default defineComponent({
@@ -191,15 +242,65 @@ export default defineComponent({
 
   // name: 'PageName',
   setup() {
+    const $q = useQuasar();
+    const userService = new UserService();
     const dialog = ref(false);
     // const dialog1 = ref(false);
     const position = ref("top");
+    // create Admin payload
+    const registerPayload = reactive({
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      designation: "",
+      gender: "",
+      bloodGroup: "",
+      dob: "",
+      password: "",
+      avatarImage: null,
+    });
+
+    // create Admin
+
+    const uploadProfileImg = (image) => {
+      registerPayload.avatarImage = image[0];
+    };
+    const createUsers = async () => {
+      try {
+        const formData = new FormData();
+        formData.append("fullName", registerPayload.fullName);
+        formData.append("email", registerPayload.email);
+        formData.append("phoneNumber", registerPayload.phoneNumber);
+        formData.append("designation", registerPayload.designation);
+        formData.append("gender", registerPayload.gender);
+        formData.append("bloodGroup", registerPayload.bloodGroup);
+        formData.append("dob", registerPayload.dob);
+        formData.append("password", registerPayload.password);
+        formData.append("avatarImage", registerPayload.avatarImage);
+
+        const response = await userService.register(formData);
+        $q.notify({
+          message: response.data.message,
+          color: "positive",
+          position: "top",
+          timeout: 2000,
+        });
+        fetchAllUsers();
+      } catch (error) {
+        $q.notify({
+          message: error.response.data.message,
+          color: "red",
+          position: "top",
+          timeout: 2000,
+        });
+      }
+    };
 
     return {
       dialog,
       position,
       fullHeight: ref(false),
-      dialogRegister: ref(false),
+      dialogRegister: ref(true),
       dialogLogin: ref(false),
       maximizedToggle: ref(true),
       password: ref(""),
@@ -211,6 +312,11 @@ export default defineComponent({
         position.value = pos;
         dialog.value = true;
       },
+      gender: ref("Male"),
+      genderOptions: ref(["Male", "Female"]),
+      registerPayload,
+      createUsers,
+      uploadProfileImg,
     };
   },
 });
