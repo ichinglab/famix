@@ -300,7 +300,7 @@ export default defineComponent({
       dialog,
       position,
       fullHeight: ref(false),
-      dialogRegister: ref(true),
+      dialogRegister: ref(false),
       dialogLogin: ref(false),
       maximizedToggle: ref(true),
       password: ref(""),
