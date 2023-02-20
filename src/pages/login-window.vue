@@ -122,7 +122,28 @@
                 class="full-width q-py-md"
                 label="Date of Birth"
                 v-model="registerPayload.dob"
-              ></q-input>
+              >
+                <template v-slot:append>
+                  <q-icon name="event" class="cursor-pointer">
+                    <q-popup-proxy
+                      cover
+                      transition-show="scale"
+                      transition-hide="scale"
+                    >
+                      <q-date v-model="registerPayload.dob" mask="YYYY-MM-DD">
+                        <div class="row items-center justify-end">
+                          <q-btn
+                            v-close-popup
+                            label="Close"
+                            color="primary"
+                            flat
+                          />
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </q-icon>
+                </template>
+              </q-input>
 
               <q-input
                 v-model="registerPayload.password"
@@ -151,6 +172,7 @@
                 rounded
                 style="width: 150px"
                 label="Register Now"
+                v-close-popup
               />
             </div>
           </q-card-section>
@@ -179,48 +201,48 @@
           Wellcome To Famix Chat Please Login
         </div>
       </q-card-section>
+      <q-form @submit.prevent="loginHandler()" class="q-gutter-md">
+        <q-card-section align="center" class="q-pa-md fixed-center">
+          <div>
+            <q-input
+              outlined
+              dense
+              v-model="loginPayload.identifier"
+              rounded
+              style="width: 300px"
+              label="Email or Phone"
+            ></q-input>
 
-      <q-card-section class="q-pa-md absolute-center">
-        <div>
-          <q-input
-            outlined
-            dense
-            rounded
-            type="email"
-            style="width: 300px"
-            label="Email"
-          ></q-input>
-
-          <q-input
-            v-model="password"
-            rounded
-            outlined
-            label="Password"
-            dense
-            class="q-py-md"
-            :type="isPwd ? 'password' : 'text'"
-          >
-            <template v-slot:append>
-              <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
-          </q-input>
-        </div>
-        <div class="q-pa-md row flex-center">
-          <q-btn
-            class="glossy"
-            dense
-            type="submit"
-            rounded
-            style="width: 150px"
-            label="Login"
-            to="/IndexPage"
-          />
-        </div>
-      </q-card-section>
+            <q-input
+              v-model="loginPayload.password"
+              rounded
+              outlined
+              label="Password"
+              dense
+              class="q-py-md"
+              :type="isPwd ? 'password' : 'text'"
+            >
+              <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
+          </div>
+          <div class="q-pa-md row flex-center">
+            <q-btn
+              class="glossy"
+              dense
+              type="submit"
+              rounded
+              style="width: 150px"
+              label="Login"
+            />
+          </div>
+        </q-card-section>
+      </q-form>
     </q-card>
   </q-dialog>
 </template>
@@ -245,9 +267,11 @@ export default defineComponent({
     const $q = useQuasar();
     const userService = new UserService();
     const dialog = ref(false);
-    // const dialog1 = ref(false);
     const position = ref("top");
-    // create Admin payload
+    const $router = useRouter();
+    const identifier = ref("");
+    const password = ref("");
+    // create register payload
     const registerPayload = reactive({
       fullName: "",
       email: "",
@@ -255,12 +279,18 @@ export default defineComponent({
       designation: "",
       gender: "",
       bloodGroup: "",
-      dob: "",
+      dob: null,
       password: "",
       avatarImage: null,
     });
+    // create login payload
 
-    // create Admin
+    const loginPayload = reactive({
+      identifier: "",
+      password: "",
+    });
+
+    // create account
 
     const uploadProfileImg = (image) => {
       registerPayload.avatarImage = image[0];
@@ -280,12 +310,11 @@ export default defineComponent({
 
         const response = await userService.register(formData);
         $q.notify({
-          message: response.data.message,
+          message: "Your Created Account , Please Login",
           color: "positive",
           position: "top",
           timeout: 2000,
         });
-        fetchAllUsers();
       } catch (error) {
         $q.notify({
           message: error.response.data.message,
@@ -296,6 +325,41 @@ export default defineComponent({
       }
     };
 
+    // login
+    async function loginHandler() {
+      try {
+        const response = await userService.login(loginPayload);
+
+        if (response.data.success) {
+          localStorage.setItem("token", response.data.payload.token);
+          const decoded = JwtDecode(response.data.payload.token);
+          localStorage.setItem("user", JSON.stringify(decoded));
+          $router.push("/IndexPage");
+
+          $q.notify({
+            message: "Login Successful",
+            color: "green",
+            position: "top",
+            timeout: 2000,
+          });
+        } else {
+          $q.notify({
+            message: "Invalid Login",
+            color: "red",
+            position: "top",
+            timeout: 2000,
+          });
+        }
+      } catch (error) {
+        $q.notify({
+          message: error.response.data.message,
+          color: "red",
+          position: "top",
+          timeout: 2000,
+        });
+      }
+    }
+
     return {
       dialog,
       position,
@@ -303,10 +367,7 @@ export default defineComponent({
       dialogRegister: ref(false),
       dialogLogin: ref(false),
       maximizedToggle: ref(true),
-      password: ref(""),
       isPwd: ref(true),
-      email: ref(""),
-      tel: ref(""),
 
       open(pos) {
         position.value = pos;
@@ -317,6 +378,10 @@ export default defineComponent({
       registerPayload,
       createUsers,
       uploadProfileImg,
+      loginHandler,
+      loginPayload,
+      identifier,
+      password,
     };
   },
 });

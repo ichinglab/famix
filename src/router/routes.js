@@ -17,6 +17,10 @@ const routes = [
     children: [
       { path: "/IndexPage", component: () => import("pages/IndexPage.vue") },
       // { path: "/test", component: () => import("components/test-check.vue") },
+      {
+        path: "/user-profile:$id",
+        component: () => import("pages/user-profile.vue"),
+      },
     ],
   },
   {
