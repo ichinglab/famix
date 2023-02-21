@@ -55,7 +55,7 @@
                     {{ props.row.bloodGroup }}
                   </q-td>
                   <q-td key="dob" :props="props">
-                    {{ props.row.dob }}
+                    {{ new Date(props.row.dob).toLocaleDateString("en-GB") }}
                   </q-td>
                   <q-td key="status" :props="props">
                     {{ props.row.isActive ? "Active" : "Suspended" }}
