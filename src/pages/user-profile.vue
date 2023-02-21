@@ -1,17 +1,6 @@
 <template>
   <div>
     <div class="row flex-center">
-      <q-btn
-        class="absolute all-pointer-events"
-        size="15px"
-        icon="camera"
-        round
-        dense
-        flat
-        style="top: 12px; left: 88%"
-      >
-        <q-tooltip> Change Cover Picture </q-tooltip>
-      </q-btn>
       <img
         src="../assets/avator/avatar2.jpeg"
         style="max-width: 100%; max-height: 400px; border-radius: 20px"
@@ -22,7 +11,7 @@
         </q-avatar>
       </div>
     </div>
-    <div class="row flex-center" style="padding: 100px">
+    <div class="row flex-center" style="padding-top: 100px">
       <p class="tex-bold text-h5">Pallob Vau</p>
     </div>
     <div class="row flex-center">
@@ -30,115 +19,106 @@
         <q-tabs v-model="tab" align="justify" narrow-indicator class="q-mb-lg">
           <q-tab class="text-light-blue-13" name="post" label="Post" />
           <q-tab class="text-light-blue-13" name="about" label="About" />
-          <q-tab class="text-light-blue-13" name="friend" label="Friend" />
+          <q-tab class="text-light-blue-13" name="mesages" label="Mesages" />
         </q-tabs>
 
-        <div>
-          <div v-for="n in 1" :key="n">
-            <q-tab-panels
-              v-model="tab"
-              animated
-              transition-prev="scale"
-              transition-next="scale"
-              class="text-white text-center"
-            >
-              <q-tab-panel name="post">
-                <div class="text-h6">My Post</div>
-                <div v-for="post in posts" :key="post.id" class="q-py-md">
-                  <q-card class="bg-grey-10 my-card">
-                    <q-item-section>
-                      <q-item-label>
-                        <div class="row">
-                          <div class="col q-pl-xs q-pt-xs">
-                            <q-avatar size="30px">
-                              <img
-                                :src="`https://cdn.quasar.dev/img/${post.avator}`"
-                              />
-                            </q-avatar>
-                            <span class="q-pa-md name-texttt text-bold">
-                              {{ post.name }}
-                            </span>
-                            <span class="text-h7"> {{ post.time }} </span>
-                            <span>
-                              <q-btn flat size="10px" round icon="public">
-                                <q-tooltip class="bg-black text-white"
-                                  >Public</q-tooltip
-                                >
-                              </q-btn>
-                            </span>
-                          </div>
-                        </div>
-                      </q-item-label>
-                    </q-item-section>
-                    <img
-                      class="q-pt-xs"
-                      :src="`https://cdn.quasar.dev/img/${post.avator}`"
-                    />
-
-                    <q-card-section class="row">
-                      <div class="text-h6">{{ post.title }}</div>
-                      <q-space />
-                      <!-- <div class="text-subtitle2">by Name</div> -->
-                      <q-btn flat dense round color="primary" icon="favorite">
-                        <q-tooltip class="bg-black text-white">Love</q-tooltip>
-                      </q-btn>
-                      <q-btn flat dense round color="primary" icon="bookmark">
-                        <q-tooltip class="bg-black text-white"
-                          >Save Post</q-tooltip
-                        >
-                      </q-btn>
-                      <q-btn flat dense round color="primary" icon="share">
-                        <q-tooltip class="bg-black text-white"
-                          >Share Network</q-tooltip
-                        >
-                      </q-btn>
-                    </q-card-section>
-                    <q-card-section class="q-pt-none">
-                      {{ post.details }}
-                    </q-card-section>
-                    <q-card-actions>
-                      <q-space />
-                      <span class="read_more_text">View More</span>
-                      <q-btn
-                        color="primary"
-                        round
-                        flat
-                        dense
-                        :icon="
-                          expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
-                        "
-                        @click="expanded = !expanded"
-                      />
-                    </q-card-actions>
-
-                    <q-slide-transition>
-                      <div v-show="expanded">
-                        <q-separator />
-                        <q-card-section class="text-subitle2">
-                          {{ post.full_details }}
-                        </q-card-section>
+        <q-tab-panels
+          v-model="tab"
+          animated
+          transition-prev="scale"
+          transition-next="scale"
+          class="text-white text-center"
+        >
+          <q-tab-panel name="post">
+            <div class="text-h6">My Post</div>
+            <div v-for="post in posts" :key="post.id" class="q-py-md">
+              <q-card class="bg-grey-10 my-card">
+                <q-item-section>
+                  <q-item-label>
+                    <div class="row">
+                      <div class="col q-pl-xs q-pt-xs">
+                        <q-avatar size="30px">
+                          <img
+                            :src="`https://cdn.quasar.dev/img/${post.avator}`"
+                          />
+                        </q-avatar>
+                        <span class="q-pa-md name-texttt text-bold">
+                          {{ post.name }}
+                        </span>
+                        <span class="text-h7"> {{ post.time }} </span>
+                        <span>
+                          <q-btn flat size="10px" round icon="public">
+                            <q-tooltip class="bg-black text-white"
+                              >Public</q-tooltip
+                            >
+                          </q-btn>
+                        </span>
                       </div>
-                    </q-slide-transition>
-                  </q-card>
-                </div>
-              </q-tab-panel>
+                    </div>
+                  </q-item-label>
+                </q-item-section>
+                <img
+                  class="q-pt-xs"
+                  :src="`https://cdn.quasar.dev/img/${post.avator}`"
+                />
 
-              <q-tab-panel name="about">
-                <div class="text-h6">About Me</div>
-                Frontend Developer (Software) | Vue.js | Quasar js | Angular |
-                Figma | Javascript | Git | Node.js | UI/UX | Software Tester |
-                IOS Test Flight | Internship Completed at IT Conquest, Canada
-              </q-tab-panel>
+                <q-card-section class="row">
+                  <div class="text-h6">{{ post.title }}</div>
+                  <q-space />
+                  <!-- <div class="text-subtitle2">by Name</div> -->
+                  <q-btn flat dense round color="primary" icon="favorite">
+                    <q-tooltip class="bg-black text-white">Love</q-tooltip>
+                  </q-btn>
+                  <q-btn flat dense round color="primary" icon="bookmark">
+                    <q-tooltip class="bg-black text-white">Save Post</q-tooltip>
+                  </q-btn>
+                  <q-btn flat dense round color="primary" icon="share">
+                    <q-tooltip class="bg-black text-white"
+                      >Share Network</q-tooltip
+                    >
+                  </q-btn>
+                </q-card-section>
+                <q-card-section class="q-pt-none">
+                  {{ post.details }}
+                </q-card-section>
+                <q-card-actions>
+                  <q-space />
+                  <span class="read_more_text">View More</span>
+                  <q-btn
+                    color="primary"
+                    round
+                    flat
+                    dense
+                    :icon="
+                      expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+                    "
+                    @click="expanded = !expanded"
+                  />
+                </q-card-actions>
 
-              <q-tab-panel name="friend">
-                <p class="text-h6">Friends</p>
-                <div v-for="post in posts" :key="post.id" class="row">
-                  {{ post.name }}
-                </div>
-              </q-tab-panel>
-            </q-tab-panels>
-          </div>
-        </div>
+                <q-slide-transition>
+                  <div v-show="expanded">
+                    <q-separator />
+                    <q-card-section class="text-subitle2">
+                      {{ post.full_details }}
+                    </q-card-section>
+                  </div>
+                </q-slide-transition>
+              </q-card>
+            </div>
+          </q-tab-panel>
+
+          <q-tab-panel name="about">
+            <div class="text-h6">About Me</div>
+            Frontend Developer (Software) | Vue.js | Quasar js | Angular | Figma
+            | Javascript | Git | Node.js | UI/UX | Software Tester | IOS Test
+            Flight | Internship Completed at IT Conquest, Canada
+          </q-tab-panel>
+
+          <q-tab-panel name="mesages">
+            <q-btn class="body-btn" no-caps label="Open Messenger"></q-btn>
+          </q-tab-panel>
+        </q-tab-panels>
       </div>
     </div>
   </div>
@@ -337,7 +317,7 @@ export default defineComponent({
     fetchSingleUsers();
     return {
       // tab: ref("about"),
-      tab: ref("post"),
+      tab: ref("mesages"),
       posts,
       expanded: ref(false),
       userDetails,

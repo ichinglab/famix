@@ -21,6 +21,8 @@ const routes = [
         path: "/user-profile/:id",
         component: () => import("pages/user-profile.vue"),
       },
+      { path: "/famix-dashboard", component: () => import("pages/admin-pannel/admin-dashboard.vue") },
+
     ],
   },
   {
