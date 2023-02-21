@@ -31,17 +31,6 @@ export class UserService {
     return api.get("/auth/profile");
   }
 
-  // Jobs APIs
-  // static async jobNewCreate(payload) {
-  //   return api.post("/job-posts", {
-  //     position: payload.position,
-  //     details: payload.details,
-  //     type: payload.type,
-  //     salaryRange: payload.salaryRange,
-  //     experienceLevel: payload.experienceLevel,
-  //     location: payload.location,
-  //   });
-  // }
   async jobCreate(payload) {
     try {
       const response = await api.post("/job-posts", payload);
@@ -56,6 +45,10 @@ export class UserService {
   }
   async getAllUsers() {
     const apiRes = await api.get(`/users`);
+    return apiRes.data;
+  }
+  async getUser(id) {
+    const apiRes = await api.get(`/users/${id}`);
     return apiRes.data;
   }
 }

@@ -1,22 +1,23 @@
 <template>
-  <div class="row flex-center">
-    <q-list class="text-weight-bolder" style="width: 300px">
-      <q-item
-        v-for="user in alluserList"
-        :key="user.id"
-        to=""
-        clickable
-        v-ripple
+  <div>
+    <q-item
+      v-for="user in alluserList"
+      :key="user"
+      :to="`/user-profile/${user.id}`"
+      clickable
+      v-ripple
+    >
+      <div
+        class="row flex-center full-width"
+        style="max-width: 500px; min-width: 300px"
       >
-        <q-item-section avatar>
+        <div class="col-3">
           <q-avatar>
             <img :src="user.avatar" />
           </q-avatar>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>{{ user.fullName }}</q-item-label>
-        </q-item-section>
-        <q-item-label caption>
+        </div>
+        <div class="col-7">{{ user.fullName }}</div>
+        <div class="col-2">
           <q-btn
             round
             dence
@@ -25,10 +26,9 @@
             size="10px"
             icon="people"
           ></q-btn>
-        </q-item-label>
-      </q-item>
-    </q-list>
-    <!-- <NewChat /> -->
+        </div>
+      </div>
+    </q-item>
   </div>
 </template>
 
@@ -36,7 +36,6 @@
 import { useQuasar } from "quasar";
 import { UserService } from "../services/user.service";
 import { defineComponent, ref, reactive } from "vue";
-// import NewChat from "src/components/new-chat.vue";
 
 export default defineComponent({
   // components: { NewChat },

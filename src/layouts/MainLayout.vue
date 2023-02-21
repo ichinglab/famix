@@ -11,7 +11,16 @@
           @click="toggleLeftDrawer"
         /> -->
 
-        <q-toolbar-title class="text-light-blue-13 text-h5" > Famix </q-toolbar-title>
+        <q-toolbar-title class="text-h5">
+          <q-item
+            style="max-width: 100px"
+            clickable
+            class="text-light-blue-13"
+            to="/IndexPage"
+          >
+            Famix
+          </q-item>
+        </q-toolbar-title>
         <!-- <div >
           <q-input
             color="green"
@@ -28,7 +37,15 @@
           </q-input>
         </div> -->
         <!-- <div class="q-pa-md text-green">Famix v0.0.1</div> -->
-        <q-btn  icon="whatsapp" to="chat-page" size="20px" color="light-blue-13" dense flat round></q-btn>
+        <q-btn
+          icon="whatsapp"
+          to="chat-page"
+          size="20px"
+          color="light-blue-13"
+          dense
+          flat
+          round
+        ></q-btn>
       </q-toolbar>
     </q-header>
 
@@ -59,7 +76,6 @@
 </template>
 
 <script>
-
 import { defineComponent, ref } from "vue";
 // import EssentialLink from 'components/EssentialLink.vue'
 
@@ -119,7 +135,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
 
     return {
-      search: ref(''),
+      search: ref(""),
 
       // essentialLinks: linksList,
       // leftDrawerOpen,
