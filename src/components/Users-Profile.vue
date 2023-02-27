@@ -16,14 +16,15 @@
         src="../assets/avator/avatar2.jpeg"
         style="max-width: 100%; max-height: 400px; border-radius: 20px"
       />
+      <!-- <pre>{{ getOwnProfile.avatar }}</pre> -->
       <div class="row flex-center my-pic" style="width: 100%">
         <q-avatar size="200px">
-          <img src="../assets/avator/avatar2.jpeg" />
+          <q-img :src="getOwnProfile.avatar" />
         </q-avatar>
       </div>
     </div>
     <div class="row flex-center" style="padding: 100px">
-      <p class="tex-bold text-h5">Pallob Vau</p>
+      <p class="tex-bold text-h5">{{ getOwnProfile.fullName }}</p>
     </div>
     <div style="max-width: 900px">
       <q-tabs v-model="tab" align="justify" narrow-indicator class="q-mb-lg">

@@ -32,6 +32,14 @@ export class UserService {
   //   return api.get(`/users/${id}`);
   // }
 
+  async statusCreate(payload) {
+    return api.post("/statuses", payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
+
   async jobCreate(payload) {
     try {
       const response = await api.post("/job-posts", payload);
@@ -50,6 +58,10 @@ export class UserService {
   }
   async getUser(id) {
     const apiRes = await api.get(`/users/${id}`);
+    return apiRes.data;
+  }
+  async getAllStatus() {
+    const apiRes = await api.get(`/statuses`);
     return apiRes.data;
   }
 }

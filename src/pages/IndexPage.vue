@@ -28,22 +28,30 @@
               <createPost />
             </div>
             <!-- create post components -->
-            <div v-for="post in posts" :key="post.id" class="row flex-center">
+            <div
+              v-for="post in allStatusList"
+              :key="post"
+              class="row flex-center"
+            >
               <q-card class="bg-grey-10 my-card">
                 <q-item-section>
                   <q-item-label>
                     <div class="row">
-                      <div class="col q-pl-xs q-pt-xs">
+                      <div class="q-pl-xs q-pt-xs">
                         <q-avatar size="30px">
                           <img
                             :src="`https://cdn.quasar.dev/img/${post.avator}`"
                           />
                         </q-avatar>
                         <span class="q-pa-md name-texttt text-bold">
-                          {{ post.name }}
+                          {{ post.name || "Anomoyus" }}
                         </span>
-                        <span class="text-h7"> {{ post.time }} </span>
-                        <span>
+                        <span class="text-h7 text-right">
+                          {{
+                            new Date(post.createdAt).toISOString().substr(0, 10)
+                          }}
+                        </span>
+                        <span class="text-right">
                           <q-btn flat size="10px" round icon="public">
                             <q-tooltip class="bg-black text-white"
                               >Public</q-tooltip
@@ -54,10 +62,7 @@
                     </div>
                   </q-item-label>
                 </q-item-section>
-                <img
-                  class="q-pt-xs"
-                  :src="`https://cdn.quasar.dev/img/${post.avator}`"
-                />
+                <img class="q-pt-xs" :src="post.imgUrl" />
 
                 <q-card-section class="row">
                   <div class="text-h6">{{ post.title }}</div>
@@ -85,9 +90,9 @@
                   </q-btn>
                 </q-card-section>
                 <q-card-section class="q-pt-none">
-                  {{ post.details }}
+                  {{ post.status }}
                 </q-card-section>
-                <q-card-actions>
+                <!-- <q-card-actions>
                   <q-space />
                   <span class="read_more_text">View More</span>
                   <q-btn
@@ -109,7 +114,7 @@
                       {{ post.full_details }}
                     </q-card-section>
                   </div>
-                </q-slide-transition>
+                </q-slide-transition> -->
               </q-card>
             </div>
           </div>
@@ -337,6 +342,8 @@ import usersFriends from "components/Users-Friends.vue";
 import usersJobs from "components/Users-Jobs.vue";
 import usersProfile from "components/Users-Profile.vue";
 import usersSettings from "components/Users-Settings.vue";
+import { useQuasar } from "quasar";
+import { UserService } from "src/services/user.service.js";
 export default defineComponent({
   components: {
     createPost,
@@ -348,12 +355,35 @@ export default defineComponent({
   name: "IndexPage",
 
   setup() {
+    const $q = useQuasar();
+    const userService = new UserService();
+    const allStatusList = ref([]);
+
+    // Get All Status
+    async function fetchAllStatus() {
+      try {
+        const response = await userService.getAllStatus();
+        console.log(response);
+        allStatusList.value = response.payload;
+      } catch (error) {
+        console.log(error);
+        $q.notify({
+          message: error.message || error.message,
+          color: "negative",
+          position: "top",
+          timeout: 2000,
+        });
+      }
+    }
+    fetchAllStatus();
     return {
       tab: ref("feed"),
       lorem:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       expanded: ref(false),
       posts,
+      allStatusList,
+      fetchAllStatus,
     };
   },
 });
