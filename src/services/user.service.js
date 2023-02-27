@@ -27,9 +27,10 @@ export class UserService {
   static async logout() {
     return api.post("/auth/logout");
   }
-  static async getProfile() {
-    return api.get("/auth/profile");
-  }
+
+  // static async getProfile(id) {
+  //   return api.get(`/users/${id}`);
+  // }
 
   async jobCreate(payload) {
     try {

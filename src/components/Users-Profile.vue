@@ -330,18 +330,42 @@ const posts = [
     time: "11:08 PM",
   },
 ];
-import { ref } from "vue";
-export default {
+import { useQuasar } from "quasar";
+import { UserService } from "../services/user.service";
+import { ref, defineComponent } from "vue";
+export default defineComponent({
   name: "usersProfile",
   setup() {
+    const $q = useQuasar();
+    const userService = new UserService();
+    const getOwnProfile = ref([]);
+    const geId = JSON.parse(localStorage.getItem("user"));
+    console.log(geId);
+    // Get users
+    async function fetchProfile() {
+      try {
+        const response = await userService.getUser(geId.id);
+        getOwnProfile.value = response.payload;
+      } catch (error) {
+        $q.notify({
+          message: error.message || error.message,
+          color: "negative",
+          position: "top",
+          timeout: 2000,
+        });
+      }
+    }
+    fetchProfile();
     return {
       // tab: ref("about"),
       tab: ref("post"),
       posts,
       expanded: ref(false),
+      getOwnProfile,
+      fetchProfile,
     };
   },
-};
+});
 </script>
 
 <style lang="sass" scoped>
