@@ -150,7 +150,7 @@
         rounded
         style="width: 150px"
         label="logout"
-        to="/"
+        @click="logout()"
       />
     </div>
     <q-footer class="bg-green text-center text-black"> @Famix Team </q-footer>
@@ -159,9 +159,13 @@
 
 <script>
 import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   setup() {
+    const $q = useQuasar();
+    const $router = useRouter();
     const oldPassword = ref("");
     const newPassword = ref("");
     const repeatPassword = ref("");
@@ -174,6 +178,18 @@ export default {
     function checkPasswordsMatch() {
       return passwordsMatch.value;
     }
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("activeTab");
+      $q.notify({
+        message: "You have been logged out successfully",
+        color: "green",
+        position: "top",
+      });
+      $router.push("/");
+    }
     return {
       isPwd: ref(true),
       oldPassword,
@@ -181,6 +197,7 @@ export default {
       repeatPassword,
       checkPasswordsMatch,
       passwordsMatch,
+      logout,
     };
   },
   components: {},
