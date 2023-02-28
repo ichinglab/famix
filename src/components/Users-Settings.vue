@@ -1,359 +1,148 @@
 <template>
   <div style="max-width: 450px">
-    
-    <div class="row">
-      <div class="text-h4 q-py-md">Account</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="account_circle"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Parsonal information</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="translate"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Translation for posts</div>
-          <div class="collom">
-            Let us know your translation preferences for posts from friends and
-            bilingual posts.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="text_format"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Font size (Medium)</div>
-          <div class="collom">Choose the size of your font in the app.</div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="add_card"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Ads Payments</div>
-          <div class="collom">Make payments or edit your payment settings</div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="add_card"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Facebook Pay</div>
-          <div class="collom">
-            Manage your payment settings, see your payment history and access
-            live chat support.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-h4 q-py-md">Security</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="security"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Security and login</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="app_registration"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Apps and website</div>
-          <div class="collom">
-            Let us know your translation preferences for posts from friends and
-            bilingual posts.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="business_center"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Business intergration</div>
-          <div class="collom">Choose the size of your font in the app.</div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-h4 q-py-md">Privacy</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="lock"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Privacy</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="lock_person"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Profile locking</div>
-          <div class="collom">
-            Let us know your translation preferences for posts from friends and
-            bilingual posts.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="local_offer"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Profile and tagging</div>
-          <div class="collom">Choose the size of your font in the app.</div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="post_add"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Public posts</div>
-          <div class="collom">Make payments or edit your payment settings</div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="block"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Blocking</div>
-          <div class="collom">
-            Manage your payment settings, see your payment history and access
-            live chat support.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-h4 q-py-md">Your Facebook information</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="key"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Access profile information</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="format_list_bulleted"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Activity log</div>
-          <div class="collom">
-            Let us know your translation preferences for posts from friends and
-            bilingual posts.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="no_accounts"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Off-Facebook activity</div>
-          <div class="collom">Choose the size of your font in the app.</div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="repeat_on"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Acces and control</div>
-          <div class="collom">Make payments or edit your payment settings</div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="file_download"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Download profile information</div>
-          <div class="collom">
-            Manage your payment settings, see your payment history and access
-            live chat support.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row q-py-sm">
-      <div class="col-2">
-        <q-btn unelevated icon="transfer_within_a_station"></q-btn>
-      </div>
-      <div class="col-10">
-        <div class="collom text-bold">Transfer a copy of your information</div>
-        <div class="collom">
-          Manage your payment settings, see your payment history and access live
-          chat support.
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-h4 q-py-md">Ads</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="ads_click"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Ad preferences</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-h4 q-py-md">Stories</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="collections"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Stories</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-h4 q-py-md">Notifications</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="collections"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Notification Settings</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="collections"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Text messaging</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-h4 q-py-md">Media</div>
-      <div class="text-h7 q-py-md">
-        Manage settings related to permissions, ads, Off-Facebook activity and
-        other account information.
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="collections"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Photo quality</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-      <div class="row q-py-sm">
-        <div class="col-2">
-          <q-btn unelevated icon="smart_display"></q-btn>
-        </div>
-        <div class="col-10">
-          <div class="collom text-bold">Autoplay video</div>
-          <div class="collom">
-            Update your name and contact information connected to your Facebook
-            account.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-2">
-        <q-btn unelevated icon="help"></q-btn>
-      </div>
-      <div class="col-10"></div>
-      <div class="text-h4 q-py-md">Meta</div>
-      <div class="row q-py-sm">
-        <div class="collom text-bold">Account Cecnter</div>
-        <div class="collom">
-          Update your name and contact information connected to your Facebook
-          account.
-        </div>
-      </div>
+    <div>
+      <q-list class="">
+        <q-expansion-item
+          group="somegroup"
+          icon="explore"
+          label="Accounts Updates"
+        >
+          <q-card class="full-width">
+            <q-card-section>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
+              eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
+              dolorum officiis modi facere maiores architecto suscipit iste
+              eveniet doloribus ullam aliquid.
+            </q-card-section>
+          </q-card>
+        </q-expansion-item>
+
+        <q-separator />
+
+        <q-expansion-item
+          group="somegroup"
+          icon="perm_identity"
+          default-opened
+          label="Security"
+        >
+          <q-card>
+            <q-card-section align="center"> Changes Password</q-card-section>
+            <q-separator />
+            <q-card-section class="full-width">
+              <q-input
+                v-model="oldPassword"
+                outlined
+                rounded
+                color="famix"
+                dense
+                label="Old Password"
+                class="q-py-md my-input full-width"
+                placeholder="Enter your Old password"
+                :type="isPwd ? 'password' : 'text'"
+              >
+                <template v-slot:append>
+                  <q-icon
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
+              <q-input
+                v-model="newPassword"
+                color="famix"
+                rounded
+                outlined
+                label="New Password"
+                dense
+                class="q-py-md my-input full-width"
+                :type="isPwd ? 'password' : 'text'"
+                placeholder="Enter your new password"
+                @input="checkPasswordsMatch"
+              >
+                <template v-slot:append>
+                  <q-icon
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
+              <q-input
+                v-model="repeatPassword"
+                outlined
+                rounded
+                color="famix"
+                dense
+                label="Repeat New Password"
+                placeholder="Enter again your new password"
+                :type="isPwd ? 'password' : 'text'"
+                class="q-py-md my-input full-width"
+                @input="checkPasswordsMatch"
+              >
+                <template v-slot:append>
+                  <q-icon
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
+
+              <p v-if="repeatPassword !== newPassword" class="text-red">
+                New Password & Repeat Password are not matched!
+              </p>
+              <p v-else-if="repeatPassword">
+                Yeah New Password & Repeat Password are matched! Now you can
+                change. Remember your new password for further login.
+              </p>
+              <p v-else>
+                <span class="text-red">⚠</span> New Password & Repeat Password
+                should be match
+              </p>
+
+              <div class="row flex-center q-py-lg">
+                <q-btn
+                  outline
+                  rounded
+                  color="famix"
+                  no-caps
+                  v-if="passwordsMatch"
+                  label="Change Password"
+                />
+              </div>
+            </q-card-section>
+          </q-card>
+        </q-expansion-item>
+
+        <q-separator />
+
+        <q-expansion-item group="somegroup" icon="shopping_cart" label="Third">
+          <q-card>
+            <q-card-section>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
+              eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
+              dolorum officiis modi facere maiores architecto suscipit iste
+              eveniet doloribus ullam aliquid.
+            </q-card-section>
+          </q-card>
+        </q-expansion-item>
+
+        <q-separator />
+
+        <q-expansion-item group="somegroup" icon="bluetooth" label="Fourth">
+          <q-card>
+            <q-card-section>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
+              eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
+              dolorum officiis modi facere maiores architecto suscipit iste
+              eveniet doloribus ullam aliquid.
+            </q-card-section>
+          </q-card>
+        </q-expansion-item>
+      </q-list>
     </div>
 
-    <div class="row flex-center">
-      <TensorTest />
-    </div>
     <div class="q-py-md row flex-center">
       <q-btn
         class="glossy"
@@ -369,18 +158,36 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import TensorTest from "./tensor-test.vue";
+import { ref, computed } from "vue";
 
 export default {
   setup() {
-    return {};
+    const oldPassword = ref("");
+    const newPassword = ref("");
+    const repeatPassword = ref("");
+    const passwordsMatch = computed(() => {
+      return (
+        newPassword.value === repeatPassword.value && newPassword.value !== ""
+      );
+    });
+
+    function checkPasswordsMatch() {
+      return passwordsMatch.value;
+    }
+    return {
+      isPwd: ref(true),
+      oldPassword,
+      newPassword,
+      repeatPassword,
+      checkPasswordsMatch,
+      passwordsMatch,
+    };
   },
-  components: { TensorTest },
+  components: {},
 };
 </script>
 <style scoped>
-.my-body {
-  max-width: 400px;
+.my-input {
+  max-width: 450px;
 }
 </style>

@@ -152,7 +152,7 @@ export default defineComponent({
           position: "top",
           timeout: 2000,
         });
-        $router.push("/IndexPage");
+        $router.push("/FamixHome");
       } catch (error) {
         const errorMessage = error.response
           ? error.response.data.message

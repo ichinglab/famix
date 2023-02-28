@@ -102,7 +102,7 @@ import { UserService } from "../services/user.service";
 import { defineComponent, ref, reactive } from "vue";
 import JobPost from "./job-post.vue";
 export default defineComponent({
-  name: "IndexPage",
+  name: "FamixHome",
   setup() {
     const $q = useQuasar();
     const userService = new UserService();

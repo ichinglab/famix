@@ -2,17 +2,12 @@
   <div>
     <q-header elevated class="bg-light-blue-13">
       <q-toolbar>
-        <q-btn
-          icon="arrow_back_ios_new"
-          to="/chat-page"
-          round
-          flat
-        ></q-btn>
+        <q-btn icon="arrow_back_ios_new" to="/chat-page" round flat></q-btn>
         <q-avatar>
           <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
         </q-avatar>
         <q-toolbar-title>
-          <q-item clickable to="/IndexPage">Jane </q-item>
+          <q-item clickable to="/FamixHome">Jane </q-item>
         </q-toolbar-title>
         <q-btn
           icon="phone_enabled"

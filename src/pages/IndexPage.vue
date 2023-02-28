@@ -367,7 +367,7 @@ export default defineComponent({
     usersProfile,
     usersSettings,
   },
-  name: "IndexPage",
+  name: "FamixHome",
 
   setup() {
     const $q = useQuasar();

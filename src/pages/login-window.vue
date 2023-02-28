@@ -334,7 +334,7 @@ export default defineComponent({
           localStorage.setItem("token", response.data.payload.token);
           const decoded = JwtDecode(response.data.payload.token);
           localStorage.setItem("user", JSON.stringify(decoded));
-          $router.push("/IndexPage");
+          $router.push("/FamixHome");
 
           $q.notify({
             message: "Login Successful",

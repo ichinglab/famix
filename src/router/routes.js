@@ -15,14 +15,16 @@ const routes = [
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: "/IndexPage", component: () => import("pages/IndexPage.vue") },
+      { path: "/FamixHome", component: () => import("pages/IndexPage.vue") },
       // { path: "/test", component: () => import("components/test-check.vue") },
       {
         path: "/user-profile/:id",
         component: () => import("pages/user-profile.vue"),
       },
-      { path: "/famix-dashboard", component: () => import("pages/admin-pannel/admin-dashboard.vue") },
-
+      {
+        path: "/famix-dashboard",
+        component: () => import("pages/admin-pannel/admin-dashboard.vue"),
+      },
     ],
   },
   {

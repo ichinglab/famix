@@ -16,7 +16,7 @@
             style="max-width: 100px"
             clickable
             class="text-famix"
-            to="/IndexPage"
+            to="/FamixHome"
           >
             Famix
           </q-item>
