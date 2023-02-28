@@ -13,7 +13,7 @@
         <q-item-section>
           <q-item-label>
             <div class="row">
-              <div class="col q-pl-xs q-pt-xs">
+              <div class="q-pl-xs q-pt-xs">
                 <q-avatar size="30px">
                   <img
                     src="https://cdn.quasar.dev/img/avatar.png"
@@ -23,6 +23,9 @@
                 <span class="q-pa-md name-texttt text-bold">
                   Rocky Samrat
                 </span>
+              </div>
+              <q-space />
+              <div>
                 <span class="text-h7">
                   {{ new Date(post.createdAt).toISOString().substr(0, 10) }}
                   <q-tooltip class="bg-black text-white">{{
@@ -50,15 +53,15 @@
           <q-btn flat dense round color="famix" icon="favorite">
             <q-tooltip class="bg-black text-white">Love</q-tooltip>
           </q-btn>
-          <q-btn flat dense round color="famix" icon="bookmark">
+          <!-- <q-btn flat dense round color="famix" icon="bookmark">
             <q-tooltip class="bg-black text-white">Save Post</q-tooltip>
           </q-btn>
           <q-btn flat dense round color="famix" icon="share">
             <q-tooltip class="bg-black text-white">Share Network</q-tooltip>
-          </q-btn>
+          </q-btn> -->
         </q-card-section>
         <div class="text-right">
-          <span class="read_more_text famix">Show More</span>
+          <span class="read_more_text famix">Job Details</span>
           <q-btn
             color="famix"
             round
@@ -88,6 +91,7 @@
                 class="body-btn"
                 no-caps
                 label="Drop Your CV"
+                to="messenger-section"
               ></q-btn>
             </div>
           </div>

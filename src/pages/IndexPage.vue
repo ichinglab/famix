@@ -2,10 +2,10 @@
   <div class="flex-center" style="max-width: 100%">
     <div class="flex-center" style="max-width: 100%">
       <q-tabs
-        v-model="tab"
+        v-model="activeTab"
         dense
-        active-color="light-blue-13"
-        indicator-color="light-blue-13"
+        active-color="famix"
+        indicator-color="famix"
       >
         <q-tab name="feed" icon="roofing" />
         <q-tab name="jobs" icon="work" />
@@ -18,7 +18,7 @@
     <q-separator />
 
     <div class="row flex-center">
-      <q-tab-panels v-model="tab" swipeable animated>
+      <q-tab-panels v-model="activeTab" swipeable animated>
         <!-- Feed Section -->
 
         <q-tab-panel name="feed">
@@ -46,13 +46,22 @@
                         <span class="q-pa-md name-texttt text-bold">
                           {{ post.name || "Anomoyus" }}
                         </span>
+                      </div>
+                      <q-space />
+                      <div>
                         <span class="text-h7 text-right">
                           {{
                             new Date(post.createdAt).toISOString().substr(0, 10)
                           }}
                         </span>
                         <span class="text-right">
-                          <q-btn flat size="10px" round icon="public">
+                          <q-btn
+                            flat
+                            size="10px"
+                            round
+                            color="famix"
+                            icon="public"
+                          >
                             <q-tooltip class="bg-black text-white"
                               >Public</q-tooltip
                             >
@@ -68,13 +77,19 @@
                   <div class="text-h6">{{ post.title }}</div>
                   <q-space />
                   <!-- <div class="text-subtitle2">by Name</div> -->
-                  <q-btn flat dense round color="light-blue-13" icon="favorite">
+                  <q-btn
+                    flat
+                    dense
+                    color="famix"
+                    label="22"
+                    icon-right="favorite"
+                  >
                     <q-tooltip class="bg-black text-white">Love</q-tooltip>
                   </q-btn>
-                  <q-btn flat dense round color="light-blue-13" icon="bookmark">
+                  <!-- <q-btn flat dense round color="famix" icon="bookmark">
                     <q-tooltip class="bg-black text-white">Save Post</q-tooltip>
                   </q-btn>
-                  <q-btn flat dense round color="light-blue-13" icon="share">
+                  <q-btn flat dense round color="famix" icon="share">
                     <ShareNetwork
                       network="facebook"
                       url="https://news.vuejs.org/issues/180"
@@ -87,7 +102,7 @@
                     <q-tooltip class="bg-black text-white"
                       >Share Network</q-tooltip
                     >
-                  </q-btn>
+                  </q-btn> -->
                 </q-card-section>
                 <q-card-section class="q-pt-none">
                   {{ post.status }}
@@ -164,7 +179,7 @@
         flat
         size="20px"
         icon="keyboard_arrow_up"
-        color="light-blue-13"
+        color="famix"
       >
         <q-tooltip class="bg-black text-white">Famix Home</q-tooltip>
       </q-btn>
@@ -377,7 +392,7 @@ export default defineComponent({
     }
     fetchAllStatus();
     return {
-      tab: ref("feed"),
+      // activeTab: ref("feed"),
       lorem:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       expanded: ref(false),
@@ -385,6 +400,16 @@ export default defineComponent({
       allStatusList,
       fetchAllStatus,
     };
+  },
+  data() {
+    return {
+      activeTab: localStorage.getItem("activeTab") || "feed",
+    };
+  },
+  watch: {
+    activeTab(value) {
+      localStorage.setItem("activeTab", value);
+    },
   },
 });
 </script>

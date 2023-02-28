@@ -15,7 +15,7 @@
           <q-item
             style="max-width: 100px"
             clickable
-            class="text-light-blue-13"
+            class="text-famix"
             to="/IndexPage"
           >
             Famix
@@ -38,10 +38,10 @@
         </div> -->
         <!-- <div class="q-pa-md text-green">Famix v0.0.1</div> -->
         <q-btn
-          icon="whatsapp"
+          icon="maps_ugc"
           to="chat-page"
-          size="20px"
-          color="light-blue-13"
+          size="15px"
+          color="famix"
           dense
           flat
           round

@@ -1,10 +1,11 @@
 <template>
   <div>
     <q-btn
-      color="light-blue-13"
+      color="famix"
       dence
       size="13px"
       outline
+      rounded
       style="width: 300px"
       label="post something"
       icon-right="edit"
