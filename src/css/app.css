@@ -40,10 +40,9 @@
 /* cards */
 .card {
   border-radius: 10px;
-  /* border: 1px solid rgba(0, 0, 0, 0.2); */
-  box-shadow: 1px 8px 29px 1px rgba(245, 166, 209, 0.42);
-  -webkit-box-shadow: 1px 8px 29px 1px rgba(245, 166, 209, 0.42);
-  -moz-box-shadow: 1px 8px 29px 1px rgba(245, 166, 209, 0.42);
+  border: 1px solid #6600ff;
+  max-width: 450px;
+  width: 100% !important;
 }
 
 /* Header Component */

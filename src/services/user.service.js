@@ -64,4 +64,8 @@ export class UserService {
     const apiRes = await api.get(`/statuses`);
     return apiRes.data;
   }
+  async getUsersStatus(id) {
+    const apiRes = await api.get(`/statuses?id=${id}`);
+    return apiRes.data;
+  }
 }

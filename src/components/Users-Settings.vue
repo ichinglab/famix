@@ -1,5 +1,6 @@
 <template>
-  <div style="max-width: 500px">
+  <div style="max-width: 450px">
+    
     <div class="row">
       <div class="text-h4 q-py-md">Account</div>
       <div class="text-h7 q-py-md">

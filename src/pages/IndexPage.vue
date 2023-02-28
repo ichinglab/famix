@@ -33,7 +33,7 @@
               :key="post"
               class="row flex-center"
             >
-              <q-card class="bg-grey-10 my-card">
+              <q-card class="bg-grey-10 card">
                 <q-item-section>
                   <q-item-label>
                     <div class="row">
@@ -378,7 +378,6 @@ export default defineComponent({
     async function fetchAllStatus() {
       try {
         const response = await userService.getAllStatus();
-        console.log(response);
         allStatusList.value = response.payload;
       } catch (error) {
         console.log(error);
@@ -414,9 +413,6 @@ export default defineComponent({
 });
 </script>
 <style lang="sass" scoped>
-.my-card
-  width: 100%
-  max-width: 450px
 
 .row > div
   // padding: 10px 15px

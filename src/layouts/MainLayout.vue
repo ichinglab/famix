@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-black">
+    <q-header unelevated class="bg-black">
       <q-toolbar>
         <!-- <q-btn
           flat
@@ -39,7 +39,7 @@
         <!-- <div class="q-pa-md text-green">Famix v0.0.1</div> -->
         <q-btn
           icon="maps_ugc"
-          to="chat-page"
+          to="/chat-page"
           size="15px"
           color="famix"
           dense

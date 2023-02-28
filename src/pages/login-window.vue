@@ -210,7 +210,7 @@
               v-model="loginPayload.identifier"
               rounded
               style="width: 300px"
-              label="Email or Phone"
+              label="Email"
             ></q-input>
 
             <q-input

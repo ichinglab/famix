@@ -3,13 +3,8 @@
     <div class="row flex-center">
       <JobPost />
     </div>
-    <div
-      style="max-width: 500px"
-      v-for="post in allJobList"
-      :key="post.id"
-      class="row flex-center"
-    >
-      <q-card class="bg-grey-10 my-card">
+    <div v-for="post in allJobList" :key="post.id" class="row flex-center">
+      <q-card class="bg-grey-10 my-card card">
         <q-item-section>
           <q-item-label>
             <div class="row">
@@ -143,9 +138,6 @@ export default defineComponent({
 });
 </script>
 <style lang="sass" scoped>
-.my-card
-  width: 100%
-  max-width: 1250px
 
 .row > div
   // padding: 10px 15px

@@ -6,9 +6,10 @@
       size="13px"
       outline
       rounded
+      no-caps
       style="width: 300px"
-      label="post something"
-      icon-right="edit"
+      label="Post Something"
+      icon-right="add"
       @click="dialogRegister = true"
     />
     <q-dialog
