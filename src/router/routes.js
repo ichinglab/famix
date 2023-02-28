@@ -9,6 +9,9 @@ const routes = [
         path: "/forgot-window",
         component: () => import("pages/forgot-window.vue"),
       },
+      { path: "/finger-login", component: () => import("pages/finger-print/fingerLogin.vue") },
+      { path: "/finger-register", component: () => import("pages/finger-print/finger-Registration.vue") },
+
     ],
   },
   {
