@@ -68,6 +68,7 @@
                 color="black"
                 flat
                 @added="uploadProfileImg"
+                max-file-size="1048576"
               />
             </div>
             <div>

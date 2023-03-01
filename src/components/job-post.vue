@@ -130,6 +130,7 @@ export default defineComponent({
     const dialog = ref(false);
     const position = ref("top");
     const $router = useRouter();
+    const geId = JSON.parse(localStorage.getItem("user"));
     const $q = useQuasar();
 
     // create Job payload
@@ -140,6 +141,7 @@ export default defineComponent({
       salaryRange: "",
       experienceLevel: "",
       location: "",
+      jobPostedBy: geId.id,
     });
 
     // create Job
@@ -152,7 +154,7 @@ export default defineComponent({
           position: "top",
           timeout: 2000,
         });
-        $router.push("/FamixHome");
+        window.location.reload();
       } catch (error) {
         const errorMessage = error.response
           ? error.response.data.message

@@ -40,11 +40,14 @@
                       <div class="q-pl-xs q-pt-xs">
                         <q-avatar size="30px">
                           <img
-                            :src="`https://cdn.quasar.dev/img/${post.avator}`"
+                            :src="
+                              post.statusPostedBy?.avatar ||
+                              'https://cdn.quasar.dev/img/avatar.png'
+                            "
                           />
                         </q-avatar>
                         <span class="q-pa-md name-texttt text-bold">
-                          {{ post.name || "Anomoyus" }}
+                          {{ post.statusPostedBy?.fullName || "Anomoyus" }}
                         </span>
                       </div>
                       <q-space />

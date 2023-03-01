@@ -117,7 +117,7 @@
                 label="Open Messenger"
                 icon="chat"
                 no-caps
-                to="/messenger-section"
+                :to="`/messenger-section/${getOwnProfile.id}`"
               />
             </div>
           </q-tab-panel>

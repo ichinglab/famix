@@ -43,7 +43,7 @@ const routes = [
     component: () => import("layouts/ChatLayout.vue"),
     children: [
       {
-        path: "/messenger-section",
+        path: "/messenger-section/:id",
         component: () => import("pages/messenger-section.vue"),
       },
       { path: "/audio-call", component: () => import("pages/audio-call.vue") },

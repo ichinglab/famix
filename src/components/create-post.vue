@@ -40,6 +40,7 @@
                   color="black"
                   flat
                   @added="uploadStatusImg"
+                  max-file-size="1048576"
                 />
               </div>
               <div>
@@ -93,12 +94,14 @@ export default defineComponent({
     const position = ref("top");
     const $q = useQuasar();
     const userService = new UserService();
+    const geId = JSON.parse(localStorage.getItem("user"));
 
     // create Status payload
     const statusPayload = reactive({
       title: "",
       status: "",
       formImage: null,
+      statusPostedBy: geId.id,
     });
 
     // create Status
@@ -112,6 +115,7 @@ export default defineComponent({
         formData.append("title", statusPayload.title);
         formData.append("status", statusPayload.status);
         formData.append("formImage", statusPayload.formImage);
+        formData.append("statusPostedBy", statusPayload.statusPostedBy);
 
         const response = await userService.statusCreate(formData);
         $q.notify({

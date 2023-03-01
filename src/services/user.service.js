@@ -57,7 +57,7 @@ export class UserService {
     return apiRes.data;
   }
   async getUser(id) {
-    const apiRes = await api.get(`/users/${id}`);
+    const apiRes = await api.get(`/users/${id}?relations=["statuses"]`);
     return apiRes.data;
   }
   async getAllStatus() {
@@ -65,7 +65,14 @@ export class UserService {
     return apiRes.data;
   }
   async getUsersStatus(id) {
-    const apiRes = await api.get(`/statuses?id=${id}`);
+    const apiRes = await api.get(`/statuses?statusPostedById=${id}`);
     return apiRes.data;
+  }
+  async updateProfilePic(payload, id) {
+    return api.put(`/users/${id}`, payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 }

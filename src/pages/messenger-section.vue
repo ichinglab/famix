@@ -7,7 +7,7 @@
           <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
         </q-avatar>
         <q-toolbar-title>
-          <q-item clickable to="/FamixHome">Jane </q-item>
+          <q-item clickable to="/FamixHome">Janwwe </q-item>
         </q-toolbar-title>
         <q-btn
           icon="phone_enabled"

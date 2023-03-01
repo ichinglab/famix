@@ -13,14 +13,16 @@
         <q-tooltip> Change Cover Picture </q-tooltip>
       </q-btn>
       <img
-        src="../assets/avator/avatar2.jpeg"
+        src="https://www.xilinx.com/content/xilinx/en/products/design-tools/resources/the-developers-guide-to-blockchain-development/_jcr_content/root/parsysFullWidth/xilinxflexibleslab/xilinxflexibleslab-parsys/xilinxcolumns_397154/childParsys-0/xilinximage_copy_cop.img.png/1644357944737.png"
         style="max-width: 100%; max-height: 400px; border-radius: 20px"
       />
       <!-- <pre>{{ getOwnProfile.avatar }}</pre> -->
       <div class="row flex-center my-pic" style="width: 100%">
-        <q-avatar size="200px">
-          <q-img :src="getOwnProfile.avatar" />
-        </q-avatar>
+        <q-item style="border-radius: 50%" clickable @click="confirm = true">
+          <q-avatar size="200px">
+            <q-img :src="getOwnProfile.avatar" />
+          </q-avatar>
+        </q-item>
       </div>
     </div>
     <div class="row flex-center" style="padding: 100px">
@@ -101,50 +103,10 @@
                   >
                     <q-tooltip class="bg-black text-white">Love</q-tooltip>
                   </q-btn>
-                  <!-- <q-btn flat dense round color="famix" icon="bookmark">
-                    <q-tooltip class="bg-black text-white">Save Post</q-tooltip>
-                  </q-btn>
-                  <q-btn flat dense round color="famix" icon="share">
-                    <ShareNetwork
-                      network="facebook"
-                      url="https://news.vuejs.org/issues/180"
-                      title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-                      description="This week, I'd like to introduce you to 'Vite', which means 'Fast'. It's a brand new development setup created by Evan You."
-                      quote="The hot reload is so fast it\'s near instant. - Evan You"
-                      hashtags="vuejs,vite"
-                    >
-                    </ShareNetwork>
-                    <q-tooltip class="bg-black text-white"
-                      >Share Network</q-tooltip
-                    >
-                  </q-btn> -->
                 </q-card-section>
                 <q-card-section class="q-pt-none">
                   {{ post.status }}
                 </q-card-section>
-                <!-- <q-card-actions>
-                  <q-space />
-                  <span class="read_more_text">View More</span>
-                  <q-btn
-                    color="primary"
-                    round
-                    flat
-                    dense
-                    :icon="
-                      expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
-                    "
-                    @click="expanded = !expanded"
-                  />
-                </q-card-actions>
-
-                <q-slide-transition>
-                  <div v-show="expanded">
-                    <q-separator />
-                    <q-card-section class="text-subitle2">
-                      {{ post.full_details }}
-                    </q-card-section>
-                  </div>
-                </q-slide-transition> -->
               </q-card>
             </div>
           </q-tab-panel>
@@ -166,12 +128,94 @@
       </div>
     </div>
   </div>
+  <!-- Profile updates dialog -->
+  <q-dialog v-model="confirm">
+    <q-card flat class="card">
+      <q-card-section>
+        <div class="row flex-center">
+          <q-btn
+            color="famix"
+            rounded
+            outline
+            no-caps
+            icon="fullscreen"
+            label="View Picture"
+            v-close-popup
+            @click="imageView = true"
+          />
+        </div>
+        <div class="row flex-center">
+          <q-btn
+            color="famix"
+            rounded
+            outline
+            no-caps
+            icon="edit"
+            label="Update Picture"
+            v-close-popup
+            @click="imageUpdate = true"
+          />
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+  <!-- Profile image view dialog -->
+  <q-dialog v-model="imageView">
+    <q-card flat class="card">
+      <q-img
+        :src="getOwnProfile.avatar"
+        spinner-color="famix"
+        spinner-size="82px"
+        style="width: 100%; height: 100%"
+      />
+    </q-card>
+  </q-dialog>
+  <!-- updates Profile image  dialog -->
+  <q-dialog v-model="imageUpdate" persistent>
+    <q-card flat class="card">
+      <q-form @submit.prevent="updateUserProfileImg()">
+        <div>
+          <div class="row flex-center">
+            <q-uploader
+              @added="updatesProfileImg"
+              flat
+              class="text-white"
+              label="Upload an image"
+              style="max-width: 450px"
+            />
+          </div>
+          <div class="row flex-center q-py-md">
+            <q-btn
+              color="famix"
+              rounded
+              outline
+              no-caps
+              icon="edit"
+              label="Update Now"
+              v-close-popup
+              type="submit"
+            />
+            <q-btn
+              color="famix"
+              rounded
+              outline
+              no-caps
+              class="q-ml-sm"
+              label="Cancel"
+              v-close-popup
+            />
+          </div>
+        </div>
+      </q-form>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
 import { useQuasar } from "quasar";
 import { UserService } from "../services/user.service";
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, reactive } from "vue";
+
 export default defineComponent({
   name: "usersProfile",
   setup() {
@@ -181,7 +225,10 @@ export default defineComponent({
     const allStatusList = ref([]);
 
     const geId = JSON.parse(localStorage.getItem("user"));
-    console.log(geId);
+    // Update Profile Image payload
+    const ppUpdatePayload = reactive({
+      avatarImage: null,
+    });
     // Get users
     async function fetchProfile() {
       try {
@@ -214,6 +261,33 @@ export default defineComponent({
       }
     }
     fetchAllStatus();
+
+    // PP updates
+
+    const updatesProfileImg = (image) => {
+      ppUpdatePayload.avatarImage = image[0];
+    };
+    const updateUserProfileImg = async () => {
+      try {
+        const formData = new FormData();
+        formData.append("avatarImage", ppUpdatePayload.avatarImage);
+
+        const response = await userService.updateProfilePic(formData, geId.id);
+        $q.notify({
+          message: "Your Profile Image has been updated",
+          color: "positive",
+          position: "top",
+          timeout: 2000,
+        });
+      } catch (error) {
+        $q.notify({
+          message: error.response.data.message,
+          color: "red",
+          position: "top",
+          timeout: 2000,
+        });
+      }
+    };
     return {
       // tab: ref("about"),
       tab: ref("post"),
@@ -222,6 +296,12 @@ export default defineComponent({
       fetchProfile,
       allStatusList,
       fetchAllStatus,
+      confirm: ref(false),
+      imageView: ref(false),
+      imageUpdate: ref(false),
+      updatesProfileImg,
+      ppUpdatePayload,
+      updateUserProfileImg,
     };
   },
 });

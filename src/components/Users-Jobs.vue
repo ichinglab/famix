@@ -10,13 +10,16 @@
             <div class="row">
               <div class="q-pl-xs q-pt-xs">
                 <q-avatar size="30px">
-                  <img
-                    src="https://cdn.quasar.dev/img/avatar.png"
+                  <q-img
+                    :src="
+                      post.jobPostedBy?.avatar ||
+                      'https://cdn.quasar.dev/img/avatar.png'
+                    "
                     alt="avatar"
                   />
                 </q-avatar>
                 <span class="q-pa-md name-texttt text-bold">
-                  Rocky Samrat
+                  {{ post.jobPostedBy?.fullName }}
                 </span>
               </div>
               <q-space />
@@ -48,12 +51,6 @@
           <q-btn flat dense round color="famix" icon="favorite">
             <q-tooltip class="bg-black text-white">Love</q-tooltip>
           </q-btn>
-          <!-- <q-btn flat dense round color="famix" icon="bookmark">
-            <q-tooltip class="bg-black text-white">Save Post</q-tooltip>
-          </q-btn>
-          <q-btn flat dense round color="famix" icon="share">
-            <q-tooltip class="bg-black text-white">Share Network</q-tooltip>
-          </q-btn> -->
         </q-card-section>
         <div class="text-right">
           <span class="read_more_text famix">Job Details</span>
@@ -86,7 +83,7 @@
                 class="body-btn"
                 no-caps
                 label="Drop Your CV"
-                to="messenger-section"
+                :to="`/messenger-section/${post.jobPostedBy?.id}`"
               ></q-btn>
             </div>
           </div>
