@@ -4,27 +4,87 @@
       <q-list class="">
         <q-expansion-item
           group="somegroup"
-          icon="explore"
+          default-opened
+          icon="manage_accounts"
           label="Accounts Updates"
         >
           <q-card class="full-width">
             <q-card-section>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
-              eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
-              dolorum officiis modi facere maiores architecto suscipit iste
-              eveniet doloribus ullam aliquid.
+              Updates your profile informations.
+              <span class="text-red"
+                >*Email & Phone number can't be change!</span
+              >
+            </q-card-section>
+            <q-card-section>
+              <div>
+                <q-input
+                  outlined
+                  dense
+                  class="q-py-md full-width"
+                  type="text"
+                  rounded
+                  label="Full Name"
+                  v-model="fullName"
+                ></q-input>
+                <q-input
+                  outlined
+                  dense
+                  class="q-py-md full-width"
+                  type="email"
+                  rounded
+                  v-model="email"
+                  label="Email"
+                  disable
+                ></q-input>
+                <q-input
+                  outlined
+                  dense
+                  class="q-py-md full-width"
+                  type="tel"
+                  rounded
+                  disable
+                  label="Phone"
+                  v-model="phoneNumber"
+                ></q-input>
+                <q-input
+                  outlined
+                  dense
+                  class="q-py-md full-width"
+                  type="text"
+                  rounded
+                  label="Address"
+                  v-model="address"
+                ></q-input>
+                <q-input
+                  outlined
+                  dense
+                  class="q-py-md full-width"
+                  type="text"
+                  rounded
+                  label="Bio"
+                  v-model="bio"
+                ></q-input>
+              </div>
+              <div class="q-pa-md row flex-center">
+                <q-btn
+                  v-if="isBioEntered"
+                  class="glossy"
+                  dense
+                  type="submit"
+                  no-caps
+                  rounded
+                  style="width: 150px"
+                  label="Update Now"
+                  v-close-popup
+                />
+              </div>
             </q-card-section>
           </q-card>
         </q-expansion-item>
 
         <q-separator />
 
-        <q-expansion-item
-          group="somegroup"
-          icon="perm_identity"
-          default-opened
-          label="Security"
-        >
+        <q-expansion-item group="somegroup" icon="lock_reset" label="Security">
           <q-card>
             <q-card-section align="center"> Changes Password</q-card-section>
             <q-separator />
@@ -158,7 +218,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
@@ -166,6 +226,8 @@ export default {
   setup() {
     const $q = useQuasar();
     const $router = useRouter();
+    const bio = ref("");
+    const isBioEntered = ref(false);
     const oldPassword = ref("");
     const newPassword = ref("");
     const repeatPassword = ref("");
@@ -190,6 +252,15 @@ export default {
       });
       $router.push("/");
     }
+
+    watch(bio, () => {
+      if (bio.value) {
+        isBioEntered.value = true;
+      } else {
+        isBioEntered.value = false;
+      }
+    });
+
     return {
       isPwd: ref(true),
       oldPassword,
@@ -198,6 +269,8 @@ export default {
       checkPasswordsMatch,
       passwordsMatch,
       logout,
+      bio,
+      isBioEntered,
     };
   },
   components: {},
