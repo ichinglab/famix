@@ -80,6 +80,9 @@
                 rounded
                 label="Full Name"
                 v-model="registerPayload.fullName"
+                :rules="[
+                  (val) => val.length > 0 || 'Please enter your full name',
+                ]"
               ></q-input>
               <q-input
                 outlined
@@ -89,15 +92,22 @@
                 rounded
                 v-model="registerPayload.email"
                 label="Email"
+                :rules="[
+                  (val) => val.length > 0 || 'Please enter your email',
+                  emailRegex,
+                ]"
               ></q-input>
               <q-input
                 outlined
                 dense
                 class="q-py-md full-width"
-                type="tel"
+                type="number"
                 rounded
                 label="Phone"
                 v-model="registerPayload.phoneNumber"
+                :rules="[
+                  (val) => val.length > 0 || 'Please enter your phone number',
+                ]"
               ></q-input>
               <q-select
                 outlined
@@ -115,6 +125,9 @@
                 class="full-width q-py-md"
                 label="Blood Group"
                 v-model="registerPayload.bloodGroup"
+                :rules="[
+                  (val) => val.length > 0 || 'Please enter your blood group',
+                ]"
               ></q-input>
               <q-input
                 outlined
@@ -123,6 +136,9 @@
                 class="full-width q-py-md"
                 label="Date of Birth"
                 v-model="registerPayload.dob"
+                :rules="[
+                  (val) => val.length > 0 || 'Please enter your date of birth',
+                ]"
               >
                 <template v-slot:append>
                   <q-icon name="event" class="cursor-pointer">
@@ -154,6 +170,7 @@
                 dense
                 class="q-py-md full-width"
                 :type="isPwd ? 'password' : 'text'"
+                :rules="[(val) => val.length > 0 || 'Please enter  password']"
               >
                 <template v-slot:append>
                   <q-icon
@@ -212,6 +229,10 @@
               rounded
               style="width: 300px"
               label="Email"
+              :rules="[
+                (val) => val.length > 0 || 'Please enter your email',
+                emailRegex,
+              ]"
             ></q-input>
 
             <q-input
@@ -222,6 +243,9 @@
               dense
               class="q-py-md"
               :type="isPwd ? 'password' : 'text'"
+              :rules="[
+                (val) => val.length > 0 || 'Please enter your  password',
+              ]"
             >
               <template v-slot:append>
                 <q-icon
@@ -272,12 +296,16 @@ export default defineComponent({
     const $router = useRouter();
     const identifier = ref("");
     const password = ref("");
+    // Mail validations
+    const emailRegex = (val) => {
+      const namePattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
+      return namePattern.test(val) || "Invalid Email";
+    };
     // create register payload
     const registerPayload = reactive({
       fullName: "",
       email: "",
       phoneNumber: "",
-      designation: "",
       gender: "",
       bloodGroup: "",
       dob: null,
@@ -302,7 +330,6 @@ export default defineComponent({
         formData.append("fullName", registerPayload.fullName);
         formData.append("email", registerPayload.email);
         formData.append("phoneNumber", registerPayload.phoneNumber);
-        formData.append("designation", registerPayload.designation);
         formData.append("gender", registerPayload.gender);
         formData.append("bloodGroup", registerPayload.bloodGroup);
         formData.append("dob", registerPayload.dob);
@@ -383,6 +410,7 @@ export default defineComponent({
       loginPayload,
       identifier,
       password,
+      emailRegex,
     };
   },
 });

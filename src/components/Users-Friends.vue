@@ -43,7 +43,7 @@ export default defineComponent({
     const $q = useQuasar();
     const userService = new UserService();
     const alluserList = ref([]);
-    // Get All jobs
+    // Get All Users
     async function fetchAllUsers() {
       try {
         const response = await userService.getAllUsers();

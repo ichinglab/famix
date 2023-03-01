@@ -1,18 +1,38 @@
 <template>
   <div>
     <div class="row flex-center">
-      <img
-        src="../assets/avator/avatar2.jpeg"
-        style="max-width: 100%; max-height: 400px; border-radius: 20px"
-      />
-      <!-- <pre>{{ getOwnProfile.avatar }}</pre> -->
+      <q-img
+        :src="
+          getOwnProfile.cover ||
+          'https://www.xilinx.com/content/xilinx/en/products/design-tools/resources/the-developers-guide-to-blockchain-development/_jcr_content/root/parsysFullWidth/xilinxflexibleslab/xilinxflexibleslab-parsys/xilinxcolumns_397154/childParsys-0/xilinximage_copy_cop.img.png/1644357944737.png'
+        "
+        style="max-width: 550px; max-height: 400px; border-radius: 20px"
+      >
+        <q-btn
+          class="absolute all-pointer-events"
+          size="15px"
+          icon="view_in_ar"
+          @click="confirmCover = true"
+          round
+          dense
+          flat
+          style="top: 12px; left: 88%"
+        >
+          <q-tooltip> Expand Cover Picture </q-tooltip>
+        </q-btn>
+      </q-img>
       <div class="row flex-center my-pic" style="width: 100%">
-        <q-avatar size="200px">
-          <q-img :src="getOwnProfile.avatar" />
-        </q-avatar>
+        <q-item style="border-radius: 50%" clickable @click="confirm = true">
+          <q-avatar size="200px">
+            <q-img
+              style="height: 200px; width: 200px"
+              :src="getOwnProfile.avatar"
+            />
+          </q-avatar>
+        </q-item>
       </div>
     </div>
-    <div class="row flex-center" style="padding: 100px">
+    <div class="row flex-center" style="padding-top: 100px">
       <p class="tex-bold text-h5">{{ getOwnProfile.fullName }}</p>
     </div>
     <div class="row flex-center">
@@ -35,7 +55,7 @@
               {{ getOwnProfile.fullName }}'s Post
             </div>
             <div
-              v-for="post in allStatusList"
+              v-for="post in getProfilePost"
               :key="post"
               class="row flex-center"
             >
@@ -46,11 +66,14 @@
                       <div class="q-pl-xs q-pt-xs">
                         <q-avatar size="30px">
                           <img
-                            :src="`https://cdn.quasar.dev/img/${post.avator}`"
+                            :src="
+                              post.statusPostedBy?.avatar ||
+                              'https://cdn.quasar.dev/img/avatar.png'
+                            "
                           />
                         </q-avatar>
                         <span class="q-pa-md name-texttt text-bold">
-                          {{ post.name || "Anomoyus" }}
+                          {{ post.statusPostedBy?.fullName || "Anomoyus" }}
                         </span>
                       </div>
                       <q-space />
@@ -101,14 +124,21 @@
           </q-tab-panel>
 
           <q-tab-panel name="about">
-            <div class="text-h6">About Me</div>
-            Frontend Developer (Software) | Vue.js | Quasar js | Angular | Figma
-            | Javascript | Git | Node.js | UI/UX | Software Tester | IOS Test
-            Flight | Internship Completed at IT Conquest, Canada
+            <div class="text-h6 row flex-center">
+              About {{ getOwnProfile.fullName }}
+            </div>
+            <div>
+              {{
+                getOwnProfile.bio ||
+                "Biography is not appaering now, Come back later"
+              }}
+            </div>
           </q-tab-panel>
 
           <q-tab-panel name="chat">
-            <div class="text-h6 row flex-center">Connect With Messenger</div>
+            <div class="text-h6 row flex-center">
+              Connect With Messenger Now
+            </div>
             <div class="row flex-center">
               <q-btn
                 outline
@@ -125,6 +155,69 @@
       </div>
     </div>
   </div>
+  <!-- Profile updates dialog -->
+  <q-dialog v-model="confirm">
+    <q-card flat class="card">
+      <q-card-section>
+        <div class="row flex-center">
+          <q-btn
+            color="famix"
+            rounded
+            outline
+            no-caps
+            icon="fullscreen"
+            label="View Picture"
+            v-close-popup
+            @click="imageView = true"
+          />
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+  <!-- Profile image view dialog -->
+  <q-dialog v-model="imageView">
+    <q-card flat class="card">
+      <q-img
+        :src="getOwnProfile.avatar"
+        spinner-color="famix"
+        spinner-size="82px"
+        style="width: 100%; height: 100%"
+      />
+    </q-card>
+  </q-dialog>
+  <!-- Cover updates dialog -->
+  <q-dialog v-model="confirmCover">
+    <q-card flat class="card">
+      <q-card-section>
+        <div class="row flex-center">
+          <q-btn
+            color="famix"
+            rounded
+            outline
+            no-caps
+            icon="fullscreen"
+            label="View Cover"
+            v-close-popup
+            @click="coverView = true"
+          />
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+  <!-- Profile image view dialog -->
+  <q-dialog v-model="coverView">
+    <q-card flat class="card">
+      <q-img
+        :src="
+          getOwnProfile.cover ||
+          'https://www.xilinx.com/content/xilinx/en/products/design-tools/resources/the-developers-guide-to-blockchain-development/_jcr_content/root/parsysFullWidth/xilinxflexibleslab/xilinxflexibleslab-parsys/xilinxcolumns_397154/childParsys-0/xilinximage_copy_cop.img.png/1644357944737.png'
+        "
+        spinner-color="famix"
+        spinner-size="82px"
+        style="width: 100%; height: 100%"
+      />
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
@@ -138,13 +231,14 @@ export default defineComponent({
     const $q = useQuasar();
     const userService = new UserService();
     const getOwnProfile = ref([]);
-    const allStatusList = ref([]);
+    const getProfilePost = ref([]);
     const $route = useRoute();
     // Get users
     async function fetchProfile() {
       try {
         const response = await userService.getUser($route.params.id);
         getOwnProfile.value = response.payload;
+        getProfilePost.value = response.payload.statuses;
       } catch (error) {
         $q.notify({
           message: error.message || error.message,
@@ -155,31 +249,18 @@ export default defineComponent({
       }
     }
     fetchProfile();
-    // Get All Status
-    async function fetchAllStatus() {
-      try {
-        const response = await userService.getUsersStatus($route.params.id);
-        console.log(response);
-        allStatusList.value = response.payload;
-      } catch (error) {
-        console.log(error);
-        $q.notify({
-          message: error.message || error.message,
-          color: "negative",
-          position: "top",
-          timeout: 2000,
-        });
-      }
-    }
-    fetchAllStatus();
+
     return {
       // tab: ref("about"),
       tab: ref("post"),
       expanded: ref(false),
       getOwnProfile,
       fetchProfile,
-      allStatusList,
-      fetchAllStatus,
+      getProfilePost,
+      confirm: ref(false),
+      imageView: ref(false),
+      confirmCover: ref(false),
+      coverView: ref(false),
     };
   },
 });

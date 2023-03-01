@@ -16,68 +16,51 @@
               >
             </q-card-section>
             <q-card-section>
-              <div>
-                <q-input
-                  outlined
-                  dense
-                  class="q-py-md full-width"
-                  type="text"
-                  rounded
-                  label="Full Name"
-                  v-model="fullName"
-                ></q-input>
-                <q-input
-                  outlined
-                  dense
-                  class="q-py-md full-width"
-                  type="email"
-                  rounded
-                  v-model="email"
-                  label="Email"
-                  disable
-                ></q-input>
-                <q-input
-                  outlined
-                  dense
-                  class="q-py-md full-width"
-                  type="tel"
-                  rounded
-                  disable
-                  label="Phone"
-                  v-model="phoneNumber"
-                ></q-input>
-                <q-input
-                  outlined
-                  dense
-                  class="q-py-md full-width"
-                  type="text"
-                  rounded
-                  label="Address"
-                  v-model="address"
-                ></q-input>
-                <q-input
-                  outlined
-                  dense
-                  class="q-py-md full-width"
-                  type="text"
-                  rounded
-                  label="Bio"
-                  v-model="bio"
-                ></q-input>
-              </div>
-              <div class="q-pa-md row flex-center">
-                <q-btn
-                  v-if="isBioEntered"
-                  class="glossy"
-                  dense
-                  type="submit"
-                  no-caps
-                  rounded
-                  style="width: 150px"
-                  label="Update Now"
-                  v-close-popup
-                />
-              </div>
+              <q-form @submit.prevent="editYourProfile()">
+                <div>
+                  <div>
+                    <q-input
+                      outlined
+                      dense
+                      class="q-py-md full-width"
+                      type="text"
+                      rounded
+                      label="Full Name"
+                      v-model="profileEditPayload.fullName"
+                    ></q-input>
+                    <q-input
+                      outlined
+                      dense
+                      class="q-py-md full-width"
+                      type="text"
+                      rounded
+                      autogrow
+                      label="Biography"
+                      v-model="profileEditPayload.bio"
+                    ></q-input>
+                  </div>
+                  <div
+                    v-if="profileEditPayload.fullName && profileEditPayload.bio"
+                    class="q-pa-md row flex-center"
+                  >
+                    <q-btn
+                      class="glossy"
+                      dense
+                      type="submit"
+                      no-caps
+                      rounded
+                      style="width: 150px"
+                      label="Update Now"
+                      v-show="
+                        profileEditPayload.fullName && profileEditPayload.bio
+                      "
+                    />
+                  </div>
+                  <div v-else class="row flex-center q-py-sm">
+                    Fill these two fields to enable the Update Now button
+                  </div>
+                </div>
+              </q-form>
             </q-card-section>
           </q-card>
         </q-expansion-item>
@@ -218,19 +201,25 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
+import { UserService } from "../services/user.service";
 
 export default {
   setup() {
+    const userService = new UserService();
     const $q = useQuasar();
     const $router = useRouter();
-    const bio = ref("");
-    const isBioEntered = ref(false);
     const oldPassword = ref("");
     const newPassword = ref("");
     const repeatPassword = ref("");
+    const geId = JSON.parse(localStorage.getItem("user"));
+    const profileEditPayload = reactive({
+      fullName: "",
+      bio: "",
+    });
+
     const passwordsMatch = computed(() => {
       return (
         newPassword.value === repeatPassword.value && newPassword.value !== ""
@@ -253,13 +242,31 @@ export default {
       $router.push("/");
     }
 
-    watch(bio, () => {
-      if (bio.value) {
-        isBioEntered.value = true;
-      } else {
-        isBioEntered.value = false;
+    // Updates Profile Details
+    const editYourProfile = async () => {
+      try {
+        const formData = new FormData();
+        formData.append("fullName", profileEditPayload.fullName);
+        formData.append("bio", profileEditPayload.bio);
+
+        const response = await userService.updateProfilePic(formData, geId.id);
+        $q.notify({
+          message: "Your Profile has been updated",
+          color: "positive",
+          position: "top",
+          timeout: 2000,
+        });
+        profileEditPayload.fullName = "";
+        profileEditPayload.bio = "";
+      } catch (error) {
+        $q.notify({
+          message: "Something went wrong",
+          color: "red",
+          position: "top",
+          timeout: 2000,
+        });
       }
-    });
+    };
 
     return {
       isPwd: ref(true),
@@ -269,8 +276,8 @@ export default {
       checkPasswordsMatch,
       passwordsMatch,
       logout,
-      bio,
-      isBioEntered,
+      editYourProfile,
+      profileEditPayload,
     };
   },
   components: {},

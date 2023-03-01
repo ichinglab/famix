@@ -39,29 +39,34 @@
             </div>
           </q-item-label>
         </q-item-section>
-        <q-card-section class="row">
-          <div class="text-h6">
-            <div>
-              <div>
-                <p>{{ post.details.split(" ").slice(0, 3).join(" ") }}</p>
-              </div>
-            </div>
+        <div class="q-pl-md q-pt-md">
+          <div>
+            <div class="text-h6">Title: {{ post.position }}</div>
+            <div>Salary Range: {{ post.salaryRange }}</div>
+            <div>Job Location: {{ post.location }}</div>
+            <div>Job Type: {{ post.type }}</div>
           </div>
-          <q-space />
-          <q-btn flat dense round color="famix" icon="favorite">
-            <q-tooltip class="bg-black text-white">Love</q-tooltip>
-          </q-btn>
-        </q-card-section>
-        <div class="text-right">
-          <span class="read_more_text famix">Job Details</span>
-          <q-btn
-            color="famix"
-            round
-            flat
-            dense
-            :icon="post.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-            @click="post.expanded = !post.expanded"
-          />
+        </div>
+        <div class="row q-pt-md">
+          <div class="col">
+            <q-btn flat dense round color="famix" icon="favorite">
+              <q-tooltip class="bg-black text-white">Love</q-tooltip>
+            </q-btn>
+          </div>
+          <div class="text-right col">
+            <span class="read_more_text famix">Job Details</span>
+            <q-btn
+              color="famix"
+              round
+              flat
+              class="text-right"
+              dense
+              :icon="
+                post.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+              "
+              @click="post.expanded = !post.expanded"
+            />
+          </div>
         </div>
 
         <q-slide-transition>
@@ -71,7 +76,7 @@
               v-if="post.details.split(' ').length > 3"
               class="text-subtitle2"
             >
-              <p>{{ post.details.split(" ").slice(3).join(" ") }}</p>
+              <p>{{ post.details }}</p>
             </q-card-section>
             <q-card-section v-else class="text-subtitle2">
               <p>No More Details There</p>

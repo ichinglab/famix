@@ -57,7 +57,7 @@ export class UserService {
     return apiRes.data;
   }
   async getUser(id) {
-    const apiRes = await api.get(`/users/${id}?relations=["statuses"]`);
+    const apiRes = await api.get(`/users/${id}?relations=["statuses","statuses.statusPostedBy"]`);
     return apiRes.data;
   }
   async getAllStatus() {

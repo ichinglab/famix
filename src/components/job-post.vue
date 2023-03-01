@@ -45,6 +45,9 @@
                   style="width: 300px"
                   placeholder="Sr. Software Engineer"
                   label="Job Position"
+                  :rules="[
+                    (val) => val.length > 0 || 'Please enter a valid position',
+                  ]"
                 ></q-input>
 
                 <q-input
@@ -56,6 +59,9 @@
                   style="width: 300px"
                   label="Job Type"
                   placeholder="Remote / Onsite / Hybrid"
+                  :rules="[
+                    (val) => val.length > 0 || 'Please enter a valid job type',
+                  ]"
                 ></q-input>
                 <q-input
                   outlined
@@ -66,6 +72,10 @@
                   style="width: 300px"
                   label="Salary Range"
                   placeholder="60000 BDT / USD"
+                  :rules="[
+                    (val) =>
+                      val.length > 0 || 'Please enter a valid salary range',
+                  ]"
                 ></q-input>
                 <q-input
                   outlined
@@ -76,6 +86,10 @@
                   style="width: 300px"
                   label="Experience Level"
                   placeholder="1-2 years"
+                  :rules="[
+                    (val) =>
+                      val.length > 0 || 'Please enter a valid experience level',
+                  ]"
                 ></q-input>
                 <q-input
                   outlined
@@ -86,6 +100,10 @@
                   style="width: 300px"
                   label="Job Location"
                   placeholder="Dhaka, Bangladesh"
+                  :rules="[
+                    (val) =>
+                      val.length > 0 || 'Please enter a valid job location',
+                  ]"
                 ></q-input>
                 <q-input
                   outlined
@@ -97,6 +115,10 @@
                   style="width: 300px"
                   label="Job Details"
                   placeholder="Job Details"
+                  :rules="[
+                    (val) =>
+                      val.length > 0 || 'Please enter a valid job details',
+                  ]"
                 ></q-input>
               </div>
               <div class="q-pa-md row flex-center">
