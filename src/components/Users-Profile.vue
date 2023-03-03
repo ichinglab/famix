@@ -210,11 +210,12 @@
     <q-card flat class="card">
       <q-form @submit.prevent="updateUserProfileImg()">
         <div>
-          <div class="row flex-center">
+          <div class="row flex-center q-pt-sm">
             <q-uploader
               @added="updatesProfileImg"
-              flat
               class="text-white"
+              bordered
+              flat
               label="Upload an image"
               style="max-width: 450px"
             />
@@ -295,9 +296,10 @@
     <q-card flat class="card">
       <q-form @submit.prevent="updateUserCoverImg()">
         <div>
-          <div class="row flex-center">
+          <div class="row flex-center q-pt-sm">
             <q-uploader
               @added="updatesCoverImg"
+              bordered
               flat
               class="text-white"
               label="Upload an image"
