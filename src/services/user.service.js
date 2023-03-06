@@ -75,4 +75,11 @@ export class UserService {
       },
     });
   }
+  async addLike(post) {
+    return api.post("/reactions", post, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
 }

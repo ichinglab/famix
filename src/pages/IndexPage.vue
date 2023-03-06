@@ -86,6 +86,7 @@
                     color="famix"
                     label="22"
                     icon-right="favorite"
+                    @click="createLike(post)"
                   >
                     <q-tooltip class="bg-black text-white">Love</q-tooltip>
                   </q-btn>
@@ -110,6 +111,41 @@
                 <q-card-section class="q-pt-none">
                   {{ post.status }}
                 </q-card-section>
+                <q-expansion-item
+                  expand-icon-toggle
+                  expand-separator
+                  label="All Comments"
+                >
+                  <q-card flat>
+                    <q-card-section>
+                      <div>
+                        <q-input
+                          outlined
+                          v-model="text"
+                          placeholder="Comment Here"
+                          rounded
+                          color="famix"
+                          dense
+                          autogrow
+                        />
+                      </div>
+                      <div v-for="n in 3" :key="n">
+                        <div>
+                          <q-avatar
+                            size="20px"
+                            font-size="52px"
+                            color="teal"
+                            text-color="white"
+                            icon="directions"
+                            class="q-ma-sm"
+                          />
+                          Name Name
+                        </div>
+                        <div class="q-ma-sm">Hello mama</div>
+                      </div>
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
                 <!-- <q-card-actions>
                   <q-space />
                   <span class="read_more_text">View More</span>
@@ -353,7 +389,7 @@ const posts = [
     time: "11:08 PM",
   },
 ];
-import { defineComponent, Vue } from "vue";
+import { defineComponent, Vue, reactive } from "vue";
 import { ref } from "vue";
 import createPost from "components/create-post.vue";
 import usersFriends from "components/Users-Friends.vue";
@@ -393,6 +429,27 @@ export default defineComponent({
       }
     }
     fetchAllStatus();
+
+    const createLike = async (payload) => {
+      try {
+        const response = await userService.addLike(payload);
+        $q.notify({
+          message: "Your Status Created",
+          color: "positive",
+          position: "top",
+          timeout: 2000,
+        });
+        dialog.value = false;
+        window.location.reload();
+      } catch (error) {
+        $q.notify({
+          message: error.response.data.message,
+          color: "red",
+          position: "top",
+          timeout: 2000,
+        });
+      }
+    };
     return {
       // activeTab: ref("feed"),
       lorem:
@@ -401,6 +458,7 @@ export default defineComponent({
       posts,
       allStatusList,
       fetchAllStatus,
+      createLike,
     };
   },
   data() {
